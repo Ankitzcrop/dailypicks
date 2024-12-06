@@ -1,0 +1,16 @@
+<!-- app/views/cart/index.html.erb -->
+<div class="container my-4">
+  <h1>Your Cart</h1>
+  <% if @cart.present? %>
+    <ul class="list-group">
+      <% @cart.each do |product_id| %>
+        <% product = Product.find(product_id) %>
+        <li class="list-group-item">
+          <%= product.name %> - ₹<%= product.discount_price %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Your cart is empty.</p>
+  <% end %>
+</div>

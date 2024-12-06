@@ -1,0 +1,146 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+# db/seeds.rb
+
+Product.create([
+  {
+    name: "Elica 60 cm 1350 m3/hr Filterless Autoclean Kitchen Chimney",
+    rating: 4.5,
+    reviews_count: 11486,
+    bought_in_past_month: 200,
+    price: 20000,
+    discount_price: 13500,
+    free_delivery: true,
+    stock: 10,
+    image_url: "elica_chimney.jpg",
+  },
+  {
+    name: "Panasonic 6 Kg 4 Star Fully-Automatic Top Load Washing Machine",
+    rating: 4.3,
+    reviews_count: 7131,
+    bought_in_past_month: 400,
+    price: 20000,
+    discount_price: 13990,
+    free_delivery: true,
+    stock: 8,
+    image_url: "panasonic_washing_machine.jpg",
+  }
+  # Add more products as needed
+])
+Product.create([
+  {
+    name: "Sony Bravia 55 inches 4K Ultra HD Smart LED TV",
+    rating: 4.6,
+    reviews_count: 8790,
+    bought_in_past_month: 120,
+    price: 75000,
+    discount_price: 68999,
+    free_delivery: true,
+    stock: 5,
+    image_url: "sony_bravia_tv.jpg",
+  },
+  {
+    name: "Dell Inspiron 15 5000 Series Laptop",
+    rating: 4.2,
+    reviews_count: 4523,
+    bought_in_past_month: 60,
+    price: 60000,
+    discount_price: 57999,
+    free_delivery: false,
+    stock: 12,
+    image_url: "dell_inspiron_laptop.jpg",
+  },
+  {
+    name: "Whirlpool 340 L 3 Star Frost-Free Double Door Refrigerator",
+    rating: 4.4,
+    reviews_count: 3192,
+    bought_in_past_month: 85,
+    price: 40000,
+    discount_price: 37990,
+    free_delivery: true,
+    stock: 7,
+    image_url: "whirlpool_refrigerator.jpg",
+  },
+  {
+    name: "Bose QuietComfort 45 Bluetooth Headphones",
+    rating: 4.7,
+    reviews_count: 5001,
+    bought_in_past_month: 150,
+    price: 32999,
+    discount_price: 29999,
+    free_delivery: true,
+    stock: 20,
+    image_url: "bose_qc45_headphones.jpg",
+  },
+  {
+    name: "Apple iPhone 14 Pro Max 128 GB",
+    rating: 4.8,
+    reviews_count: 12000,
+    bought_in_past_month: 300,
+    price: 139900,
+    discount_price: 129900,
+    free_delivery: true,
+    stock: 25,
+    image_url: "iphone_14_pro_max.jpg",
+  },
+  {
+    name: "Samsung Galaxy Tab S8 Ultra",
+    rating: 4.5,
+    reviews_count: 4200,
+    bought_in_past_month: 70,
+    price: 98000,
+    discount_price: 94000,
+    free_delivery: true,
+    stock: 15,
+    image_url: "samsung_tab_s8_ultra.jpg",
+  },
+  {
+    name: "Philips Air Fryer HD9252/90",
+    rating: 4.4,
+    reviews_count: 500,
+    bought_in_past_month: 180,
+    price: 9999,
+    discount_price: 8999,
+    free_delivery: false,
+    stock: 18,
+    image_url: "philips_air_fryer.jpg",
+  },
+  {
+    name: "Nike Revolution 6 Running Shoes",
+    rating: 4.5,
+    reviews_count: 3200,
+    bought_in_past_month: 250,
+    price: 4599,
+    discount_price: 3999,
+    free_delivery: true,
+    stock: 30,
+    image_url: "nike_revolution_6.jpg",
+  },
+  {
+    name: "Fossil Gen 6 Smartwatch",
+    rating: 4.3,
+    reviews_count: 1900,
+    bought_in_past_month: 95,
+    price: 22999,
+    discount_price: 20999,
+    free_delivery: true,
+    stock: 10,
+    image_url: "fossil_gen6_smartwatch.jpg",
+  },
+  {
+    name: "Logitech MX Master 3S Wireless Mouse",
+    rating: 4.6,
+    reviews_count: 1200,
+    bought_in_past_month: 180,
+    price: 8499,
+    discount_price: 7999,
+    free_delivery: false,
+    stock: 25,
+    image_url: "logitech_mx_master_3s.jpg",
+  }
+])

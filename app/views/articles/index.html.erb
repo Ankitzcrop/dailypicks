@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Style Header</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="header">
+    <div class="logo">
+      <%= image_tag 'dailylogo.png', alt: 'Logo' %>
+    </div>
+    <div class="location">
+      <button class="location-btn">Update Location</button>
+    </div>
+    <div class="search-bar">
+      <select class="category-dropdown">
+        <option value="all">All Categories</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home & Kitchen</option>
+      </select>
+      <input type="text" placeholder="Search for products" class="search-input">
+      <button class="search-btn">Search</button>
+    </div>
+    <div class="language">
+      <select class="language-dropdown">
+        <option value="en">English</option>
+        <option value="ur">Urdu</option>
+      </select>
+    </div>
+    <div class="account">
+      <% if user_signed_in? %>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "logout-btn"%>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %> | 
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </div>
+    <div class="returns">
+      <a href="#">Returns & Orders</a>
+    </div>
+    <div class="cart">
+      <a href="#">
+        <span class="material-icons">shopping_cart</span>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- New Navigation Bar -->
+  <nav class="secondary-nav">
+    <ul class="menu">
+      <li class="dropdown">
+        <a href="#">All Category</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Option 1</a></li>
+          <li><a href="#">Option 2</a></li>
+          <li><a href="#">Option 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li class="dropdown">
+        <a href="#">More</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Option 1</a></li>
+          <li><a href="#">Option 2</a></li>
+          <li><a href="#">Option 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <div class="contact-info">
+      <span class="material-icons">phone</span>
+      <span class="phone-number">+63 919 0967407</span>
+      <span class="customer-support">Customer Support</span>
+    </div>
+  </nav>
+  <div class="product-slider-container">
+    <div class="product-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="/assets/product1.jpg" alt="Product 1" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product2.jpg" alt="Product 2" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product3.jpg" alt="Product 3" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product4.jpg" alt="Product 3" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product5.jpg" alt="Product 3" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product6.jpg" alt="Product 3" class="product-image">
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/product7.jpg" alt="Product 3" class="product-image">
+        </div>
+        <!-- Add more product images as needed -->
+      </div>
+      
+      <!-- Optional: Add navigation arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+  <section class="explore-more">
+    <h2>Explore more from Small Businesses</h2>
+    <div class="box-container">
+      <!-- First Box -->
+      <div class="box">
+        <h3>Explore more from Small Businesses</h3>
+        <div class="items">
+          <div class="item">
+            <img src="/assets/ethnic.jpg" alt="Ethnic" />
+            <p>Ethnic, dresses & more</p>
+          </div>
+          <div class="item">
+            <img src="/assets/decor.jpg" alt="Décor" />
+            <p>Décor</p>
+          </div>
+          <div class="item">
+            <img src="/assets/fashion.jpg" alt="Fashion" />
+            <p>Fashion accessories</p>
+          </div>
+          <div class="item">
+            <img src="/assets/glassware.jpg" alt="Glassware" />
+            <p>Glassware & drinkware</p>
+          </div>
+        </div>
+      </div>
+      <!-- Second Box -->
+      <div class="box">
+        <h3>Revamp your home in style</h3>
+        <div class="items">
+          <div class="item">
+            <img src="/assets/cushion.jpg" alt="Cushion covers" />
+            <p>Cushion covers, bedsheets & more</p>
+          </div>
+          <div class="item">
+            <img src="/assets/figurines.jpg" alt="Figurines" />
+            <p>Figurines, vases & more</p>
+          </div>
+          <div class="item">
+            <img src="/assets/storage.jpg" alt="Storage" />
+            <p>Home storage</p>
+          </div>
+          <div class="item">
+            <img src="/assets/lighting.jpg" alt="Lighting" />
+            <p>Lighting solutions</p>
+          </div>
+        </div>
+      </div>
+      <!-- Third Box -->
+      <div class="box">
+        <h3>Min. 40% off | Fun toys & games | Amazon brands</h3>
+        <div class="items">
+          <div class="item">
+            <img src="/assets/soft-toys.jpg" alt="Soft toys" />
+            <p>Min. 40% off | soft toys</p>
+          </div>
+          <div class="item">
+            <img src="/assets/indoor-games.jpg" alt="Indoor games" />
+            <p>Min. 40% off |Indoor games</p>
+          </div>
+          <div class="item">
+            <img src="/assets/outdoor-games.jpg" alt="Outdoor games" />
+            <p>Min. 40% off |Outdoor games</p>
+          </div>
+          <div class="item">
+            <img src="/assets/ride-ons.jpg" alt="Ride ons" />
+            <p>Min. 40% off |Ride ons</p>
+          </div>
+        </div>
+      </div>
+      <!-- Fourth Box -->
+      <div class="box">
+        <h3>Appliances for your home | Up to 55% off</h3>
+        <div class="items">
+          <div class="item">
+            <img src="/assets/ac.jpg" alt="ACs" />
+            <p>Air conditioners</p>
+          </div>
+          <div class="item">
+            <img src="/assets/refrigerator.jpg" alt="Refrigerators" />
+            <p>Refrigerators</p>
+          </div>
+          <div class="item">
+            <img src="/assets/microwave.jpg" alt="Microwaves" />
+            <p>Microwaves</p>
+          </div>
+          <div class="item">
+            <img src="/assets/washing-machine.jpg" alt="Washing machines" />
+            <p>Washing machines</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="explore-btn">Explore All</button>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('.product-slider', {
+        slidesPerView: 1, // Show one product image at a time
+        spaceBetween: 0, // No space between slides
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        loop: true, // Loop the images (when the last image is reached, it moves to the first one)
+        centeredSlides: true, // Ensure the slides are centered
+        grabCursor: true, // Allow grabbing of the slider for better navigation
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+/* General Body Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #232f3e;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo img {
+  height: 50px;
+  width: 150px;
+}
+
+.location-btn {
+  background-color: #37475a;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 20px;
+  max-width: 600px;
+}
+
+.category-dropdown {
+  padding: 10px 6px;
+  border: none;
+  background-color: #ddd;
+  border-radius: 5px 0 0 5px;
+  font-size: 12px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 6px;
+  border: none;
+}
+
+.search-btn {
+  background-color: #febd69;
+  color: black;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  font-size: 14px;
+}
+
+.language-dropdown {
+  background-color: #37475a;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.account a,
+.returns a,
+.cart a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+}
+
+.cart a {
+  display: flex;
+  align-items: center;
+}
+
+.cart img {
+  height: 24px;
+  vertical-align: middle;
+}
+
+.cart-count {
+  background-color: #f08804;
+  border-radius: 50%;
+  color: black;
+  padding: 4px 7px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.cart .material-icons {
+  font-size: 28px;
+}
+
+/* Secondary Navigation Styling */
+.secondary-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #37475a;
+  color: white;
+  padding: 10px 20px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 15px;
+  position: relative;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #232f3e;
+  display: none;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 5px 20px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.contact-info .material-icons {
+  margin-right: 5px;
+}
+
+.phone-number {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.customer-support {
+  color: #febd69;
+}
+</style>
+<style>
+  /* Styling for the product image slider container */
+  .product-slider-container {
+    width: 100%;
+    height: 400px; /* Adjust the height to match your product image size */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    /* Ensure the product images fill the slide */
+  .product-slider .swiper-slide {
+    display: flex;
+    justify-content: center; /* Centers the image */
+    align-items: center; /* Vertically aligns the image */
+  }
+
+
+  /* Styling for the swiper (slider) */
+  .product-slider {
+    margin-top: 120px;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Styling for each product image */
+  .product-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Optional: Styling for navigation arrows */
+  .swiper-button-next,
+  .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #232f3e;
+    font-size: 24px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+  }
+</style>
+<style>
+  .explore-more {
+    padding: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+
+  .explore-more h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #232f3e;
+  }
+
+  .box-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-top: 100px;
+  }
+
+  .box h3 {
+    font-size: 18px;
+    color: #232f3e;
+    margin-bottom: 10px;
+  }
+
+  .box p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .item {
+    text-align: center;
+  }
+
+  .item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 5px;
+  }
+
+  .item p {
+    font-size: 12px;
+    color: #232f3e;
+  }
+
+  .explore-btn {
+    margin-top: 20px;
+    background-color: #febd69;
+    color: #232f3e;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .explore-btn:hover {
+    background-color: #f08804;
+  }
+</style>

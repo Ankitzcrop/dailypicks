@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rating: 1.5
+  reviews_count: 1
+  bought_in_past_month: 1
+  price: 1
+  discount_price: 1
+  free_delivery: false
+  stock: 1
+
+two:
+  name: MyString
+  rating: 1.5
+  reviews_count: 1
+  bought_in_past_month: 1
+  price: 1
+  discount_price: 1
+  free_delivery: false
+  stock: 1
