@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_scope :user do
+    get 'sellers/sign_up', to: 'users/registrations#new', defaults: { seller: true }, as: :seller_sign_up
+  end  
   root "articles#index"
   get "/articles", to: "articles#index"
   resources :products, only: [:index]

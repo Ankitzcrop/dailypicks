@@ -1,0 +1,151 @@
+<div class="container mt-5">
+  <div class="card shadow border-0 rounded-lg overflow-hidden">
+    <div class="card-header bg-gradient-primary text-white text-center py-4">
+      <h2 class="mb-1">Sign Up</h2>
+      <p class="mb-0">Create your account and join us today!</p>
+    </div>
+    <div class="card-body p-5 bg-light">
+      <% if @is_seller %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "needs-validation", novalidate: true, multipart: true }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :seller, value: "true" %>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :name, class: "form-label text-dark fw-bold" %>
+              <%= f.text_field :name, class: "form-control rounded-pill px-3", placeholder: "Full Name", autofocus: true %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :email, class: "form-label text-dark fw-bold" %>
+              <%= f.email_field :email, class: "form-control rounded-pill px-3", placeholder: "Enter your email" %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <%= f.label :password, class: "form-label text-dark fw-bold" %>
+              <%= f.password_field :password, class: "form-control rounded-pill px-3", placeholder: "Enter a password" %>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.label :password_confirmation, class: "form-label text-dark fw-bold" %>
+              <%= f.password_field :password_confirmation, class: "form-control rounded-pill px-3", placeholder: "Confirm your password" %>
+            </div>
+          </div>
+          
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <%= f.label :mobile, class: "form-label text-dark fw-bold" %>
+              <%= f.telephone_field :mobile, class: "form-control rounded-pill px-3", placeholder: "+63XXXXXXXXXX" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :store_name, class: "form-label text-dark fw-bold" %>
+              <%= f.text_field :store_name, class: "form-control rounded-pill px-3", placeholder: "Your Store Name" %>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <%= f.label "Business Name (if registered)", class: "form-label text-dark fw-bold" %>
+            <%= f.text_field :business_name, class: "form-control rounded-pill px-3", placeholder: "Your Business Name" %>
+          </div>
+          
+          <div class="mt-3">
+            <%= f.label "Tax Identification Number (TIN)", class: "form-label text-dark fw-bold" %>
+            <%= f.text_field :tax_identification_number, class: "form-control rounded-pill px-3", placeholder: "9-digit TIN" %>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <%= f.label :philippine_government_id_card, "Philippine Government ID", class: "form-label text-dark fw-bold" %>
+              <%= f.file_field :philippine_government_id_card, class: "form-control rounded-pill px-3", accept: "image/*" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :address_proof, "Address Proof", class: "form-label text-dark fw-bold" %>
+              <%= f.file_field :address_proof, class: "form-control rounded-pill px-3", accept: "image/*" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :logo, "Store Logo", class: "form-label text-dark fw-bold" %>
+              <%= f.file_field :logo, class: "form-control rounded-pill px-3", accept: "image/*" %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <%= f.label :region, class: "form-label text-dark fw-bold" %>
+              <%= f.text_field :region, class: "form-control rounded-pill px-3", placeholder: "Region" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :city, "City/Municipality", class: "form-label text-dark fw-bold" %>
+              <%= f.text_field :city, class: "form-control rounded-pill px-3", placeholder: "City or Municipality" %>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <%= f.label :barangay, "Barangay (optional)", class: "form-label text-dark fw-bold" %>
+            <%= f.text_field :barangay, class: "form-control rounded-pill px-3", placeholder: "Barangay" %>
+          </div>
+          
+          <div class="mt-3">
+            <%= f.label :dti_sec_registration_number, "DTI/SEC Registration Number", class: "form-label text-dark fw-bold" %>
+            <%= f.text_field :dti_sec_registration_number, class: "form-control rounded-pill px-3", placeholder: "DTI/SEC Registration" %>
+          </div>
+
+          <div class="mt-4">
+            <%= f.check_box :agreement, class: "form-check-input", id: "agreement" %>
+            <%= f.label :agreement, "By clicking Sign Up, you confirm that the information provided is true and correct, and you agree to our Terms & Conditions and Privacy Policy as per Philippine regulations.", class: "form-check-label text-dark" %>
+          </div>
+          
+          <div class="mt-4 text-center">
+            <%= f.submit "Sign Up as Seller", class: "btn btn-gradient-primary text-white btn-lg w-50 shadow" %>
+          </div>
+        <% end %>
+      <% else %>
+        <!-- General User Form -->
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          
+          <div class="mt-3">
+            <%= f.label :email, class: "form-label text-dark fw-bold" %>
+            <%= f.email_field :email, class: "form-control rounded-pill px-3", placeholder: "Enter your email" %>
+          </div>
+          
+          <div class="mt-3">
+            <%= f.label :password, class: "form-label text-dark fw-bold" %>
+            <%= f.password_field :password, class: "form-control rounded-pill px-3", placeholder: "Enter a password" %>
+          </div>
+
+          <div class="mt-3">
+            <%= f.label :password_confirmation, class: "form-label text-dark fw-bold" %>
+            <%= f.password_field :password_confirmation, class: "form-control rounded-pill px-3", placeholder: "Confirm your password" %>
+          </div>
+
+          <div class="mt-4 text-center">
+            <%= f.submit "Sign Up", class: "btn btn-gradient-primary text-white btn-lg w-50 shadow" %>
+          </div>
+          <div class="text-center mt-3">
+            <%= link_to "Sign up as Seller", new_user_registration_path(seller: true), class: "text-decoration-none" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<style>
+  .bg-gradient-primary {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  .btn-gradient-primary {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    border: none;
+  }
+  .btn-gradient-primary:hover {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    opacity: 0.9;
+  }
+  .form-control {
+    height: calc(2.5em + 2px);
+  }
+  .rounded-pill {
+    border-radius: 50rem !important;
+  }
+</style>
