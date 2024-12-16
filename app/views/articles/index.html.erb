@@ -1,663 +1,1822 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon Style Header</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-</head>
-<body>
-  <!-- Top Header -->
-  <header class="header">
-    <div class="logo">
-      <%= image_tag 'dailylogo.png', alt: 'Logo' %>
-    </div>
-    <div class="location">
-      <button class="location-btn">Update Location</button>
-    </div>
-    <div class="search-bar">
-      <select class="category-dropdown">
-        <option value="all">All Categories</option>
-        <option value="electronics">Electronics</option>
-        <option value="fashion">Fashion</option>
-        <option value="home">Home & Kitchen</option>
-      </select>
-      <input type="text" placeholder="Search for products" class="search-input">
-      <button class="search-btn">Search</button>
-    </div>
-    <div class="language">
-      <select class="language-dropdown">
-        <option value="en">English</option>
-        <option value="ur">Urdu</option>
-      </select>
-    </div>
-    <div class="account">
-      <% if user_signed_in? %>
-        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "logout-btn"%>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %> | 
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
-    </div>
-    <div class="returns">
-      <a href="#">Returns & Orders</a>
-    </div>
-    <div class="cart">
-      <a href="#">
-        <span class="material-icons">shopping_cart</span>
-        <span class="cart-count">0</span>
-      </a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Style Header</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <%= render 'shared/header' %>
+    <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
 
-  <!-- New Navigation Bar -->
-  <nav class="secondary-nav">
-    <ul class="menu">
-      <li class="dropdown">
-        <a href="#">All Category</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Groceries</a></li>
-          <li><a href="#">Electronics & Appliances</a></li>
-          <li><a href="#">Apparel & Accessories</a></li>
-          <li><a href="#">Baby and Kids</a></li>
-          <li><a href="#">Home and Living</a></li>
-          <li><a href="#">Beauty & Personal Care</a></li>
-          <li><a href="#">Toys & Games</a></li>
-          <li><a href="#">Books & Stationery</a></li>
-          <li><a href="#">Sport & Outdoors</a></li>
-          <li><a href="#">Health & Wellness</a></li>
-          <li><a href="#">Tech Accessories</a></li>
-          <li><a href="#">Jewelry & Watches</a></li>
-          <li><a href="#">Pet Supplies</a></li>
-          <li><a href="#">Automotive</a></li>
-          <li><a href="#">Travel & Lugguage</a></li>
-          <li><a href="#">Specialty Store</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Groceries</a></li>
-      <li><a href="#">Electronics & Appliances</a></li>
-      <li><a href="#">Pet Supplies</a></li>
-      <li><a href="#">Baby & Kids</a></li>
-      <li><a href="#">Home & Living</a></li>
-      <li class="dropdown">
-        <a href="#">More</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Option 1</a></li>
-          <li><a href="#">Option 2</a></li>
-          <li><a href="#">Option 3</a></li>
-        </ul>
-      </li>
-    </ul>
-    <div class="contact-info">
-      <span class="material-icons">phone</span>
-      <span class="phone-number">+63 919 0967407</span>
-      <span class="customer-support">Customer Support</span>
-    </div>
-  </nav>
-  <div class="product-slider-container">
-    <div class="product-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="/assets/product1.jpg" alt="Product 1" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product2.jpg" alt="Product 2" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product3.jpg" alt="Product 3" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product4.jpg" alt="Product 3" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product5.jpg" alt="Product 3" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product6.jpg" alt="Product 3" class="product-image">
-        </div>
-        <div class="swiper-slide">
-          <img src="/assets/product7.jpg" alt="Product 3" class="product-image">
-        </div>
-        <!-- Add more product images as needed -->
-      </div>
-      
-      <!-- Optional: Add navigation arrows -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </div>
-  <section class="explore-more">
-    <h2>Explore more from Small Businesses</h2>
-    <div class="box-container">
-      <!-- First Box -->
-      <div class="box">
-        <h3>Explore more from Small Businesses</h3>
-        <div class="items">
-          <div class="item">
-            <img src="/assets/ethnic.jpg" alt="Ethnic" />
-            <p>Ethnic, dresses & more</p>
+      <!-- Carousel Items -->
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('<%= asset_path('image_3.png') %>'); background-size: cover; background-position: center; height: 700px;">
+          <div class="container h-100 d-flex flex-column justify-content-start align-items-start text-dark">
+            <h2 class="fw-bold mt-5 text-muted" style="font-size: 5rem; line-height: 1.7;">Fresh Fruits & <br> Vegetable</h2>
+            <div class="d-flex justify-content-center mt-5">
+              <a href="#" class="btn btn-lg rounded-pill px-5 py-2 w-100 w-sm-75 w-md-75 w-lg-75" 
+                 style="background-color: #88bb2f; color: white; max-width: 300px;">
+                 Now on Daily Picks
+              </a>
+            </div>
           </div>
-          <div class="item">
-            <img src="/assets/decor.jpg" alt="Décor" />
-            <p>Décor</p>
-          </div>
-          <div class="item">
-            <img src="/assets/fashion.jpg" alt="Fashion" />
-            <p>Fashion accessories</p>
-          </div>
-          <div class="item">
-            <img src="/assets/glassware.jpg" alt="Glassware" />
-            <p>Glassware & drinkware</p>
-          </div>
-        </div>
-      </div>
-      <!-- Second Box -->
-      <div class="box">
-        <h3>Revamp your home in style</h3>
-        <div class="items">
-          <div class="item">
-            <img src="/assets/cushion.jpg" alt="Cushion covers" />
-            <p>Cushion covers, bedsheets & more</p>
-          </div>
-          <div class="item">
-            <img src="/assets/figurines.jpg" alt="Figurines" />
-            <p>Figurines, vases & more</p>
-          </div>
-          <div class="item">
-            <img src="/assets/storage.jpg" alt="Storage" />
-            <p>Home storage</p>
-          </div>
-          <div class="item">
-            <img src="/assets/lighting.jpg" alt="Lighting" />
-            <p>Lighting solutions</p>
-          </div>
-        </div>
-      </div>
-      <!-- Third Box -->
-      <div class="box">
-        <h3>Min. 40% off | Fun toys & games | Amazon brands</h3>
-        <div class="items">
-          <div class="item">
-            <img src="/assets/soft-toys.jpg" alt="Soft toys" />
-            <p>Min. 40% off | soft toys</p>
-          </div>
-          <div class="item">
-            <img src="/assets/indoor-games.jpg" alt="Indoor games" />
-            <p>Min. 40% off |Indoor games</p>
-          </div>
-          <div class="item">
-            <img src="/assets/outdoor-games.jpg" alt="Outdoor games" />
-            <p>Min. 40% off |Outdoor games</p>
-          </div>
-          <div class="item">
-            <img src="/assets/ride-ons.jpg" alt="Ride ons" />
-            <p>Min. 40% off |Ride ons</p>
-          </div>
-        </div>
-      </div>
-      <!-- Fourth Box -->
-      <div class="box">
-        <h3>Appliances for your home | Up to 55% off</h3>
-        <div class="items">
-          <div class="item">
-            <img src="/assets/ac.jpg" alt="ACs" />
-            <p>Air conditioners</p>
-          </div>
-          <div class="item">
-            <img src="/assets/refrigerator.jpg" alt="Refrigerators" />
-            <p>Refrigerators</p>
-          </div>
-          <div class="item">
-            <img src="/assets/microwave.jpg" alt="Microwaves" />
-            <p>Microwaves</p>
-          </div>
-          <div class="item">
-            <img src="/assets/washing-machine.jpg" alt="Washing machines" />
-            <p>Washing machines</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="explore-btn">Explore All</button>
-  </section>
-  <!-- Include Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-    <footer style="font-family: Arial, sans-serif; background-color: #ffffff; color: black; padding: 30px;">
-      <!-- Top Section: Newsletter -->
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #42381E; color: white; border-bottom: 1px solid #7A7D52;">
-        <!-- Logo -->
-        <div style="display: flex; align-items: center;">
-          <i class="fas fa-shopping-bag" style="font-size: 30px; color: #7FAE3B; margin-right: 10px;"></i>
-          <span style="font-size: 24px; font-weight: bold; color: #7FAE3B;">DailyPicks</span>
         </div>
 
-        <!-- Newsletter -->
-        <div style="text-align: center; flex: 1; margin-left: 20px; margin-right: 20px;">
-          <p style="margin: 0; font-size: 26px;">Sign up to Newsletter</p>
-          <p style="margin: 0; font-size: 14px;">Subscribe to our newsletter to get updates on our latest offers!</p>
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('<%= asset_path('image_3.png') %>'); background-size: cover; background-position: center; height: 700px;">
+          <div class="container h-100 d-flex flex-column justify-content-start align-items-start">
+            <h2 class="fw-bold mt-5 text-muted" style="font-size: 5rem; line-height: 1.7;">Fresh Fruits & <br> Vegetable</h2>
+            <div class="d-flex justify-content-center mt-5">
+              <a href="#" class="btn btn-lg rounded-pill px-5 py-2 w-100 w-sm-75 w-md-75 w-lg-75" 
+                 style="background-color: #88bb2f; color: white; max-width: 300px;">
+                 Now on Daily Picks
+              </a>
+            </div>
+          </div>
         </div>
 
-        
-        <!-- Input and Button Container -->
-        <div style="display: flex; gap: 10px; align-items: center; border: 1px solid #ddd; border-radius: 25px; padding: 10px;">
-          <input type="email" placeholder="Email Address" 
-                style="padding: 10px; border: none; flex: 1; border-radius: 5px 0 0 5px;" required>
-          <button type="submit" 
-                  style="padding: 10px 20px; background-color: #7FAE3B; color: white; border: none; border-radius: 0 5px 5px 0; font-weight: bold;">
-            Sign Up
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url('<%= asset_path('image_3.png') %>'); background-size: cover; background-position: center; height: 700px;">
+          <div class="container h-100 d-flex flex-column justify-content-start align-items-start">
+            <h2 class="fw-bold mt-5 text-muted" style="font-size: 5rem; line-height: 1.7;">Fresh Fruits & <br> Vegetable</h2>
+            <div class="d-flex justify-content-center mt-5">
+              <a href="#" class="btn btn-lg rounded-pill px-5 py-2 w-100 w-sm-75 w-md-75 w-lg-75 button"style="max-width: 300px;">Now on Daily Picks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="container my-4">
+      <div class="row row-cols-1 row-cols-md-3 g-5">
+       <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <!-- Image Section -->
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left mt-4">
+                <%= image_tag "Property_1=vegetable", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <!-- Text and Arrow Section -->
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <!-- Title -->
+                <h5 class="card-title text-center text-md-start" style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">
+                  CATCH<br> BIG DEALS<br> ON FRUITS &amp; VEGETABLES
+                </h5>
+                <!-- Arrow -->
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left">
+                <%= image_tag "Property_1=image_9.png", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center text-md-start"style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">CATCH<br> BIG DEALS<br> ON BEVERAGES</h5>
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left">
+                <%= image_tag "Property_1=image_10.png", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center text-md-start"style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">CATCH<br> BIG DEALS<br> ON SNACKS</h5>
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container my-4">
+      <div class="row row-cols-1 row-cols-md-3 g-5">
+       <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <!-- Image Section -->
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left mt-4">
+                <%= image_tag "Property_1=vegetable.png", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <!-- Text and Arrow Section -->
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <!-- Title -->
+                <h5 class="card-title text-center text-md-start" style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">
+                  CATCH<br> BIG DEALS<br> ON FRUITS &amp; VEGETABLES
+                </h5>
+                <!-- Arrow -->
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left">
+                <%= image_tag "Property_1=image_9.png", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center text-md-start"style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">CATCH<br> BIG DEALS<br> ON BEVERAGES</h5>
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card d-flex flex-row h-100" style="background-color: #f0f2f5; border: none;">
+            <div class="col-5 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="card-img-left">
+                <%= image_tag "Property_1=image_10.png", class: "img-fluid rounded" %>
+              </div>
+            </div>
+            <div class="col-7 col-md-6 mt-4">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center text-md-start"style="word-wrap: break-word; font-size: clamp(1rem, 1.5vw, 1.2rem);">CATCH<br> BIG DEALS<br> ON SNACKS</h5>
+                <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <%= image_tag "Property_1=arrow_down.svg", class: "img-fluid", alt: "Arrow pointing right" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container my-5 ">
+      <div class="row g-5">
+        <div class="col-md-4 col-sm-12 col-12 mb-3">
+          <div class="card border border-success w-100">
+            <div class="card-body">
+              <!-- Header -->
+              <div class="d-flex justify-content-between align-items-center mt-4 px-3 px-sm-3">
+                <h5 class="card-title mb-0 fs-4 text-muted fw-bold">
+                  <span>Special</span><br>
+                  <span>Offer</span>
+                </h5>
+                <div class="px-3">
+                  <p class="card-text mb-0 text-center text-white rounded-circle button d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    Save<br>₱355
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-2">
+                 <%= image_tag "Property_1=vegetable.png", class: "img-fluid rounded w-75" %>
+              </div>
+
+              <!-- Product Details -->
+              <h4 class="card-title mt-3 text-center">Supples Baby Wet Wipes with Aloe Vera and Vitamin E, 72 Wipes/Pack (Pack of 6)</h4>
+              <h5 class="card-text text-muted text-center mt-3"><del>₱744</del></h5>
+              <h3 class="card-text text-dark text-center">₱389</h3>
+
+              <!-- Availability -->
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <p class="card-text">Available: 5</p>
+                </div>
+                <div class="col-md-6">
+                  <p class="card-text">Already Sold: 15</p>
+                </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="progress mb-3 mt-2" style="height: 1.5rem; border-radius: 1rem;">
+                <div class="progress-bar button" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <!-- Countdown -->
+              <p class="card-text text-center">Hurry Up! Offer ends in:</p>
+              <div class="d-flex justify-content-center flex-wrap">
+                <div class="mx-2 text-center">
+                  <span class="badge button text-white p-3">00</span>
+                  <p class="mt-2">HOURS</p>
+                </div>
+                <div class="mx-2 text-center">
+                  <span class="badge button text-white p-3">00</span>
+                  <p class="mt-2">MIN</p>
+                </div>
+                <div class="mx-2 text-center">
+                  <span class="badge button text-white p-3">00</span>
+                  <p class="mt-2">SEC</p>
+                </div>
+              </div>
+
+              <!-- Checkout Button -->
+              <div class="text-center">
+                <a href="#" class="btn button px-5 mt-3 rounded-pill">Check Out Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-8">
+          <ul class="nav nav-underline nav-fill container">
+            <li class="nav-item">
+              <a class="nav-link active pb-1 px-3 position-relative" aria-current="page" href="#">Featured</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-1 px-3" href="#">Special Offer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-1 px-3" href="#">On Sale</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-1 px-3" href="#">Latest Deals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-1 px-3" href="#">Top Rated</a>
+            </li>
+          </ul>
+
+
+          <%# <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <!-- Toggle Button for Mobile View -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav nav-underline position-relative mx-auto" style="width: fit-content;">
+                  <li class="nav-item me-5 fw-bold fs-5 position-relative">
+                    <a class="nav-link active pb-1 position-relative" href="#">Featured</a>
+                  </li>
+                  <li class="nav-item me-4 fw-bold fs-5 position-relative">
+                    <a class="nav-link pb-1 position-relative text-dark" href="#">Special Offer</a>
+                  </li>
+                  <li class="nav-item me-4 fw-bold fs-5 position-relative">
+                    <a class="nav-link pb-1 position-relative text-dark" href="#">On Sale</a>
+                  </li>
+                  <li class="nav-item me-4 fw-bold fs-5 position-relative">
+                    <a class="nav-link pb-1 position-relative text-dark" href="#">Latest Deals</a>
+                  </li>
+                  <li class="nav-item fw-bold fs-5 position-relative">
+                    <a class="nav-link pb-1 position-relative text-dark" href="#">Top Rated</a>
+                  </li>
+                  <!-- Main border -->
+                  <div class="border-bottom border-3 position-absolute w-100" style="bottom: -2px; left: 0; z-index: 1;"></div>
+                </ul>
+              </div>
+            </div>
+          </nav> %>
+
+
+          <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col ">
+              <div class="card shadow-sm border-muted rounded-4 position-relative">
+                <div class="card-body p-3 mb-2">
+                  <!-- Category -->
+                  <p class="text-muted mb-1 small mt-3">Beverages</p>
+                  <!-- Product Image -->
+                  <div class="text-center mt-5 mb-3">
+                    <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                  </div>
+                  <!-- Product Title -->
+                  <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                  <!-- Price -->
+                  <div class="d-flex align-items-center mt-2">
+                    <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                    <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                  </div>
+                  <!-- Rating and Sold Count -->
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <!-- Star Rating -->
+                    <div class="d-flex align-items-center">
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                      <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                    </div>
+                    <!-- Sold Count -->
+                    <p class="mb-0 text-muted small">sold: 100</p>
+                  </div>
+                </div>
+                <div class="card-icons position-absolute">
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Wishlist</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Quick View</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <div class="icon-circle">
+                      <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                    </div>
+                    <span class="icon-text">Add to Cart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container my-5">
+      <div class="row justify-content-center g-4">
+        <!-- First Card -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card h-100 p-3 button border border-radius" style="background-color: #8BC34A; color: white;">
+            <div class="d-flex align-items-center text-start">
+              <%= image_tag "Property_1=carbon_delivery.svg", class: "img-fluid rounded" %>
+              <div class="px-3 mt-2">
+                <h6 class="fw-bold mb-2">Fast & Free Shipping</h6>
+                <h6 class="mb-0 fw-bold">For all orders over ₱ 10k</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Card -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card h-100 p-3 button border border-radius" style="background-color: #8BC34A; color: white;">
+            <div class="d-flex align-items-center text-start">
+              <%= image_tag "Property_1=carbon_delivery.svg", class: "img-fluid rounded" %>
+              <div class="px-3 mt-2">
+                <h6 class="fw-bold mb-2">100% Satisfaction</h6>
+                <h6 class="mb-0 fw-bold">Your Happiness, Our Priority</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Card -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card h-100 p-3 button border border-radius" style="background-color: #8BC34A; color: white;">
+            <div class="d-flex align-items-center text-start">
+              <%= image_tag "Property_1=carbon_delivery.svg", class: "img-fluid rounded" %>
+              <div class="px-3 mt-2">
+                <h6 class="fw-bold mb-2">Special Offers & Discounts</h6>
+                <h6 class="mb-0 fw-bold">Big Savings Galore</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid my-5">
+      <ul class="nav nav-underline  nav-fill container">
+        <li class="nav-item ">
+          <a class="nav-link active nav-link active  position-relative" aria-current="page" href="#">Top Selling</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            href="#"
+            id="groceriesDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Groceries
+            <%= image_tag "Property_1=arrow_down.svg", class: "dropdown-icon " %>
+           
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="groceriesDropdown">
+            <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
+            <li><a class="dropdown-item" href="#">Snacks</a></li>
+            <li><a class="dropdown-item" href="#">Beverages</a></li>
+            <li><a class="dropdown-item" href="#">Dairy Products</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Electronics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Meat & Seafood</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home & Living</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Beauty & Personal Care</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Stationary</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link d-flex align-items-center"
+            href="#"
+            id="moreDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+            <%= image_tag "Property_1=arrow_down.svg", class: "dropdown-icon " %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+            <li><a class="dropdown-item" href="#">Books</a></li>
+            <li><a class="dropdown-item" href="#">Toys</a></li>
+            <li><a class="dropdown-item" href="#">Sports</a></li>
+            <li><a class="dropdown-item" href="#">Others</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row row-cols-1 row-cols-md-5 g-2 mt-4">
+        <div class="col">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div> 
+          </div>
+        </div> 
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card shadow-sm border-muted rounded-4 position-relative">
+            <div class="card-body p-3 mb-2">
+              <!-- Category -->
+              <p class="text-muted mb-1 small mt-3">Beverages</p>
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-3">
+                <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+              </div>
+              <!-- Product Title -->
+              <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+              <!-- Price -->
+              <div class="d-flex align-items-center mt-2">
+                <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+              </div>
+              <!-- Rating and Sold Count -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Star Rating -->
+                <div class="d-flex align-items-center">
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                </div>
+                <!-- Sold Count -->
+                <p class="mb-0 text-muted small">sold: 100</p>
+              </div>
+            </div>
+            <div class="card-icons position-absolute">
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Wishlist</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Quick View</span>
+              </div>
+              <div class="icon-wrapper">
+                <div class="icon-circle">
+                  <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                </div>
+                <span class="icon-text">Add to Cart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class=" container my-4 mb-4">
+      <div class="background text-white py-4">
+        <div class="row justify-content-between text-center">
+          <div class="col-4 mt-3 mb-2">
+            <h1>Banner <br>250</h1>
+          </div>
+          <div class="col-4 mt-3 mb-2">
+            <a href="#" class="btn button px-5 mt-3 rounded-pill">Shop Now</a>
+          </div>
+          <div class="col-4">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container my-5">
+      <!-- Section Header -->
+      <div class="d-flex justify-content-between align-items-center mb-3 trending-header">
+        <div class="position-relative">
+          <h4 class="fw-bold mb-0">Trending</h4>
+          <div class="header-underline"></div>
+        </div>
+        <div>
+          <button class="carousel-arrow" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+            &lsaquo; <!-- Left arrow -->
+          </button>
+          <button class="carousel-arrow" data-bs-target="#trendingCarousel" data-bs-slide="next">
+            &rsaquo; <!-- Right arrow -->
           </button>
         </div>
       </div>
 
-      <!-- Middle Section: Links -->
-      <div style="display: flex; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; flex-wrap: wrap;">
-        <!-- Get Questions Section -->
-        <div>
-          <p style="font-weight: bold; margin-bottom: 10px;">Get Questions?</p>
-          <p style="margin: 5px 0;">(000) 0000-0000, (000)</p>
-          <p style="margin: 5px 0;">0000-0000</p>
-          <p style="font-weight: bold; margin-bottom: 10px;">Address:</p>
-          <p style="margin: 5px 0;"><i class="fas fa-map-marker-alt" style="color:  #7FAE3B;"></i> Warehouse 211 Tulay A,</p>
-          <p style="margin: 5px 0;"> Maragondon Cavite</p>
-          <p style="margin: 5px 0;"><i class="fas fa-envelope" style="color:  #7FAE3B;"></i> support@dailypicks.co</p>
-          <p style="margin: 5px 0;"><i class="fas fa-phone-alt" style="color:  #7FAE3B;"></i> +63 919 0967407</p>
-          <p style="margin-top: 10px; font-weight: bold;">Follow Us:</p>
-          <div style="display: flex; gap: 10px;">
-            <a href="#"><i class="fab fa-facebook-f" style="font-size: 20px; color: #666d76;"></i></a>
-            <a href="#"><i class="fab fa-instagram" style="font-size: 20px; color: #666d76;"></i></a>
-            <a href="#"><i class="fab fa-twitter" style="font-size: 20px; color: #666d76;"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in" style="font-size: 20px; color: #666d76;"></i></a>
-          </div>
-        </div>
+      <!-- Carousel -->
+      <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- First Slide -->
+          <div class="carousel-item active mt-3">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <% 4.times do %>
+                  <div class="col">
+                    <div class="card shadow-sm border-muted">
+                      <div class="card-body p-3 mb-2">
+                        <p class="text-muted mb-1 small mt-3">Beverages</p>
+                        <!-- Product Image -->
+                        <div class="text-center mt-5 mb-3">
+                          <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                        </div>
+                        <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                        <!-- Price -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Left side: Price details -->
+                          <div class="d-flex flex-column align-items-start">
+                            <h6 class="card-text mb-3 mt-2 text-muted text-decoration-line-through small">₱124</h6>
+                            <h5 class="card-text mb-0 text-dark">₱118</h5>
+                          </div>
 
-        <!-- Find it Fast -->
-        <div>
-          <p style="font-weight: bold; margin-bottom: 10px;">Find it fast</p>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li> Beverages</li>
-            <li> Snacks</li>
-            <li> Household Essentials</li>
-            <li> Meat & Seafood</li>
-            <li> Dairy</li>
-            <li> Frozen Foods</li>
-            <li> Breads & Cereals</li>
-          </ul>
-        </div>
+                          <!-- Right side: Image inside a rounded circle -->
+                          <div class="button border rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                            <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "img-fluid" %>
+                          </div>
+                        </div>
 
-        <!-- Get to Know Us -->
-        <div>
-          <p style="font-weight: bold; margin-bottom: 10px;">Get to Know Us</p>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li> About DailyPicks</li>
-            <li> Our Team</li>
-            <li> Our Blogs</li>
-            <li> Careers</li>
-          </ul>
-        </div>
+                        <!-- Rating and Sold Count -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Star Rating -->
+                          <div class="d-flex align-items-center">
+                            <% 4.times do %>
+                              <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                            <% end %>
+                            <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                          </div>
+                          <!-- Sold Count -->
+                          <p class="mb-0 text-muted small">sold: 100</p>
+                        </div>
+                      </div>
+                      <div class="card-footer text-muted">
+                        <div class="row">
+                          <!-- Quick View Section -->
+                          <div class="col-12 col-sm-6 col-md-6 d-flex align-items-center mb-2 mb-sm-0 justify-content-center justify-content-md-start">
+                            <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon me-2" %>
+                            <span class="text-nowrap">Quick View</span>
+                          </div>
 
-        <!-- Let Us Help You -->
-        <div>
-          <p style="font-weight: bold; margin-bottom: 10px;">Let us help you</p>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li> My Account</li>
-            <li> Order Tracking</li>
-            <li> Wish List</li>
-            <li> Customer Service</li>
-            <li> Return/Exchange</li>
-            <li> FAQs</li>
-          </ul>
-        </div>
+                          <!-- Add to Wishlist Section -->
+                          <div class="col-12 col-sm-6 col-md-6 d-flex align-items-center mb-2 mb-sm-0 justify-content-center justify-content-md-end">
+                            <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon me-2" %>
+                            <span class="text-nowrap">Add to wishlist</span>
+                          </div>
+                        </div>
+                      </div>
 
-        <!-- Get the DailyPicks App -->
-        <div>
-          <p style="font-weight: bold; margin-bottom: 10px; color: #7FAE3B;">Get DailyPicks App:</p>
-          <p>Scan QR Code or Download to apps stores</p>
-          <div style="display: flex; align-items: center; gap: 10px;">
-             <img src="<%= asset_path('qr-code.png') %>" alt="QR Code" style="width: 80px;">
-              <div>
-                <img src="<%= asset_path('app-store.png') %>" alt="App Store" style="width: 100px; margin-bottom: 5px;">
-                <img src="<%= asset_path('google-play.png') %>" alt="Google Play" style="width: 100px;">
+                    </div>
+                  </div>
+                <% end %>
               </div>
+            </div>
+          </div>
+          <div class="carousel-item mt-3">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <% 4.times do %>
+                  <div class="col">
+                    <div class="card shadow-sm border-muted">
+                      <div class="card-body p-3 mb-2">
+                        <p class="text-muted mb-1 small mt-3">Beverages</p>
+                        <!-- Product Image -->
+                        <div class="text-center mt-5 mb-3">
+                          <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                        </div>
+                        <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                        <!-- Price -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Left side: Price details -->
+                          <div class="d-flex flex-column align-items-start">
+                            <h6 class="card-text mb-3 mt-2 text-muted text-decoration-line-through small">₱124</h6>
+                            <h5 class="card-text mb-0 text-dark">₱118</h5>
+                          </div>
+
+                          <!-- Right side: Image inside a rounded circle -->
+                          <div class="button border rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                            <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "img-fluid" %>
+                          </div>
+                        </div>
+
+                        <!-- Rating and Sold Count -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Star Rating -->
+                          <div class="d-flex align-items-center">
+                            <% 4.times do %>
+                              <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                            <% end %>
+                            <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                          </div>
+                          <!-- Sold Count -->
+                          <p class="mb-0 text-muted small">sold: 100</p>
+                        </div>
+                      </div>
+                      <div class="card-footer text-muted">
+                        <div class="row g-2">
+                          <!-- Quick View Section -->
+                          <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
+                            <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon me-2" %>
+                            <span class="text-nowrap">Quick View</span>
+                          </div>
+
+                          <!-- Add to Wishlist Section -->
+                          <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end">
+                            <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon me-2" %>
+                            <span class="text-nowrap">Add to wishlist</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Bottom Section -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #f0f1f5; border-top: 1px solid #7A7D52; padding: 10px 20px; font-size: 14px; color: #000;">
-          <!-- Left Side -->
-          <p style="margin: 0;">&copy; 2024 DailyPicks. All Rights Reserved.</p>
-          
-          <!-- Center Boxes -->
-          <div style="display: flex; gap: 10px;">
-            <div style="width: 35px; height: 25px; background-color: #939393; border-radius: 4px;"></div>
-            <div style="width: 35px; height: 25px; background-color: #939393; border-radius: 4px;"></div>
-            <div style="width: 35px; height: 25px; background-color: #939393; border-radius: 4px;"></div>
-            <div style="width: 35px; height: 25px; background-color: #939393; border-radius: 4px;"></div>
-          </div>
-          
-          <!-- Right Side -->
-          <p style="margin: 0;"><i class="fas fa-language"></i> Language: English</p>
+    <div class="background text-white py-4 container-fluid", style="height:450px">
+    </div>
+
+    <div class="container my-5 mb-0">
+      <!-- Header Section -->
+      <div class="d-flex justify-content-between align-items-center mb-3 trending-header">
+        <div class="position-relative">
+          <h4 class="fw-bold mb-0">New Products</h4>
+          <div class="header-underline2"></div>
         </div>
-    </footer>
+        <div>
+          <h6 class="text-muted">View All</h6>
+        </div>
+      </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      new Swiper('.product-slider', {
-        slidesPerView: 1, // Show one product image at a time
-        spaceBetween: 0, // No space between slides
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        loop: true, // Loop the images (when the last image is reached, it moves to the first one)
-        centeredSlides: true, // Ensure the slides are centered
-        grabCursor: true, // Allow grabbing of the slider for better navigation
-      });
-    });
-  </script>
-  <script src="script.js"></script>
-</body>
+      <!-- Main Content Section -->
+      <div class="row mt-5">
+        <div class="col-md-8">
+          <div class="row g-2">
+            <% 6.times do |i| %>
+              <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card shadow-sm border-muted">
+                      <div class="card-body p-3 mb-2">
+                        <p class="text-muted mb-1 small mt-3">Beverages</p>
+                        <!-- Product Image -->
+                        <div class="text-center mt-5 mb-3">
+                          <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                        </div>
+                        <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                        <!-- Price -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Left side: Price details -->
+                          <div class="d-flex flex-column align-items-start">
+                            <h6 class="card-text mb-3 mt-2 text-muted text-decoration-line-through small">₱124</h6>
+                            <h5 class="card-text mb-0 text-dark">₱118</h5>
+                          </div>
+
+                          <!-- Right side: Image inside a rounded circle -->
+                          <div class="button border rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                            <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "img-fluid" %>
+                          </div>
+                        </div>
+
+                        <!-- Rating and Sold Count -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- Star Rating -->
+                          <div class="d-flex align-items-center">
+                            <% 4.times do %>
+                              <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                            <% end %>
+                            <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                          </div>
+                          <!-- Sold Count -->
+                          <p class="mb-0 text-muted small">sold: 100</p>
+                        </div>
+                      </div>
+                      <div class="card-footer text-muted">
+                        <div class="row">
+                          <!-- Quick View Section -->
+                          <div class="col-12 col-sm-6 col-md-6 d-flex align-items-center mb-2 mb-sm-0 justify-content-center justify-content-md-start">
+                            <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                            <span class="text-nowrap me-2">Quick View</span>
+                          </div>
+
+                          <!-- Add to Wishlist Section -->
+                          <div class="col-12 col-sm-6 col-md-6 d-flex align-items-center mb-2 mb-sm-0 justify-content-center justify-content-md-end">
+                            <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                            <span class="text-nowrap me-1">Add to wishlist</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Right Side: 1 Card -->
+        <div class="col-md-4 mt-5 mb-5">
+          <div class="card border border-success border-radius w-100">
+            <div class="card-body">
+              
+              <!-- Product Image -->
+              <div class="text-center mt-5 mb-2">
+                 <%= image_tag "Property_1=vegetable.png", class: "img-fluid rounded w-75" %>
+              </div>
+
+              <!-- Product Details -->
+              <h4 class="card-title mt-5 text-center">Supples Baby Wet Wipes with Aloe Vera and Vitamin E, 72 Wipes/Pack (Pack of 6)</h4>
+              <h5 class="card-text text-muted text-center mt-4"><del>₱744</del></h5>
+              <h3 class="card-text text-dark text-center">₱389</h3>
+
+
+              <!-- Checkout Button -->
+              <div class="text-center mt-5">
+                <a href="#" class="btn button px-5 mt-5 rounded-pill mb-5">Check Out Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid my-5 border border-radius p-3">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+          <div class="background text-white p-5 h-100 d-flex align-items-center justify-content-center">
+            <h3>Banner 450*120</h3>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+          <div class="background  text-white p-5 h-100 d-flex align-items-center justify-content-center">
+            <h3>Banner 450*120</h3>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+          <div class="background text-white p-5 h-100 d-flex align-items-center justify-content-center">
+            <h3>Banner 450*120</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5 mt-5">
+      <!-- Header Section -->
+      <div class="d-flex justify-content-between align-items-center mb-3 trending-header">
+        <div class="position-relative">
+          <h4 class="fw-bold mb-0">New Products</h4>
+          <div class="header-underline2"></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h6 class="text-dark me-3">View All</h6>
+          <h6 class="text-muted me-3">Hot Sell</h6>
+          <h6 class="text-muted">Trend</h6>
+        </div>
+      </div>
+
+      <!-- Cards Section -->
+      <div class="row g-3 mt-3">
+        <% 12.times do |i| %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm border-muted rounded-4 position-relative">
+              <div class="card-body p-3 mb-2">
+                <!-- Category -->
+                <p class="text-muted mb-1 small mt-3">Beverages</p>
+                <!-- Product Image -->
+                <div class="text-center mt-5 mb-3">
+                  <%= image_tag "microwave.jpg", class: "img-fluid rounded w-75 mb-3" %>
+                </div>
+                <!-- Product Title -->
+                <p class="card-title fs-6">Kopiko Blanca Creamy Coffee Mix Twin Pack 10×58g</p>
+                <!-- Price -->
+                <div class="d-flex align-items-center mt-2">
+                  <h5 class="card-text mb-0 text-dark me-3">₱118</h5>
+                  <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₱124</h6>
+                </div>
+                <!-- Rating and Sold Count -->
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <!-- Star Rating -->
+                  <div class="d-flex align-items-center">
+                    <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                    <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                    <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                    <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                    <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                  </div>
+                  <!-- Sold Count -->
+                  <p class="mb-0 text-muted small">sold: 100</p>
+                </div>
+              </div>
+              <div class="card-icons position-absolute">
+                <div class="icon-wrapper">
+                  <div class="icon-circle">
+                    <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+                  </div>
+                  <span class="icon-text">Add to Wishlist</span>
+                </div>
+                <div class="icon-wrapper">
+                  <div class="icon-circle">
+                    <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+                  </div>
+                  <span class="icon-text">Quick View</span>
+                </div>
+                <div class="icon-wrapper">
+                  <div class="icon-circle">
+                    <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+                  </div>
+                  <span class="icon-text">Add to Cart</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn button px-5 mt-3 rounded-pill">Load More</a>
+      </div>
+    </div>
+    <%= render 'shared/footer' %>
+  </body>
 </html>
+
 <style>
-/* General Body Styling */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+ 
+ body{
+  margin: 0px !important;
+  padding: 0px !important;
+  overflow-x: hidden !important;
+ }
+  .carousel-control-prev, .carousel-control-next {
+    visibility: hidden;
+  }
+  .button{
+    background-color: #88bb2f;
+    color: white;
+  }
+
+.badge{
+  font-size: 1.5rem; 
+  width: 4rem; 
+  height: 4rem;
+}
+/* Base styles for the navigation items */
+.nav-link {
+  color: #000;
+  border-bottom: 2px solid transparent; /* Transparent border by default */
+  transition: border-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-/* Header Styling */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #232f3e;
-  color: white;
-  padding: 10px 20px;
+/* Active state styling */
+.nav-link.active {
+  color: #88bb2f; /* Active text color */
+  border-bottom: 3px solid #88bb2f !important; /* Active bottom border color */
 }
 
-.logo img {
-  height: 50px;
-  width: 150px;
+/* Hover effect */
+.nav-link:hover {
+  color: #88bb2f;
+  border-bottom: 3px solid #88bb2f !important; /* Hover styling with higher specificity */
 }
 
-.location-btn {
-  background-color: #37475a;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 5px;
+.star-icon {
+  width: 15px; /* Adjust the width as per your preference */
+  height: 15px; /* Adjust the height as per your preference */
+}
+.star2-icon {
+  width: 14px; /* Adjust the width as per your preference */
+  height: 14px; /* Adjust the height as per your preference */
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  margin: 0 20px;
-  max-width: 600px;
-}
-
-.category-dropdown {
-  padding: 10px 6px;
-  border: none;
-  background-color: #ddd;
-  border-radius: 5px 0 0 5px;
-  font-size: 12px;
-}
-
-.search-input {
-  flex-grow: 1;
-  padding: 6px;
-  border: none;
-}
-
-.search-btn {
-  background-color: #febd69;
-  color: black;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0;
-  font-size: 14px;
-}
-
-.language-dropdown {
-  background-color: #37475a;
-  color: white;
-  border: none;
-  padding: 8px;
-  font-size: 14px;
-}
-
-.account a,
-.returns a,
-.cart a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 14px;
-}
-
-.cart a {
-  display: flex;
-  align-items: center;
-}
-
-.cart img {
-  height: 24px;
-  vertical-align: middle;
-}
-
-.cart-count {
-  background-color: #f08804;
-  border-radius: 50%;
-  color: black;
-  padding: 4px 7px;
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-.cart .material-icons {
-  font-size: 28px;
-}
-
-/* Secondary Navigation Styling */
-.secondary-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #37475a;
-  color: white;
-  padding: 10px 20px;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li {
-  margin: 0 15px;
+.card {
   position: relative;
 }
 
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
+.card:hover{
+  border: 1px solid #88bb2f ;
 }
 
-.dropdown-menu {
+.card-icons {
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #232f3e;
-  display: none;
-  list-style: none;
-  padding: 10px 0;
-  margin: 0;
-}
-
-.dropdown-menu li {
-  padding: 5px 20px;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.contact-info {
+  top: 30%;  /* Position the icons vertically in the middle */
+  right: 10px;  /* Adjust to position inside the card (can be any value depending on your needs) */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   display: flex;
-  align-items: center;
-  font-size: 14px;
+  flex-direction: column;
 }
 
-.contact-info .material-icons {
-  margin-right: 5px;
+.icon-wrapper {
+  position: relative;  /* To position the text over or beside the icons */
 }
 
-.phone-number {
-  margin-right: 10px;
+.card-icon {
+  width: 20px; /* Adjust size of icon inside the circle */
+  height: 20px; /* Adjust size of icon inside the circle */
+  display: block; /* Ensure the icon is displayed as a block element */
+}
+.card:hover .card-icons {
+  opacity: 1;
+
+}
+
+/* Tooltip-like effect for the text */
+.icon-text {
+  position: absolute;
+  top: 50%; /* Center the text vertically relative to the icon */
+  right: 35px; /* Position the text to the left of the icon */
+  transform: translateY(-50%); /* Adjusts to ensure the text is centered vertically */
+  background-color: rgba(211, 211, 211, 0.7);
+  color: black; /* Text color */
+  padding: 8px 12px; /* Increased padding for a larger text box */
+  border-radius: 4px;
+  font-size: 14px; /* Increase font size for better readability */
+  width: 120px; /* Increase width to allow more space for the text */
+  max-width: 200px; /* Set a max width to prevent it from becoming too wide */
+  word-wrap: break-word; /* Ensure long text wraps within the box */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;  /* Disable interaction with the tooltip */
+}
+
+/* Show the text when hovering over an icon */
+.icon-wrapper:hover .icon-text {
+  opacity: 1;
+}
+
+.icon-circle {
+  width: 30px; /* Size of the circle */
+  height: 30px; /* Size of the circle */
+  background-color: rgba(211, 211, 211, 0.7); /* Light grey background */
+  border-radius: 50%; /* Make the circle shape */
+  display: flex;
+  justify-content: center; /* Horizontally center the icon */
+  align-items: center; /* Vertically center the icon */
+  margin-bottom: 10px; /* Space between icons */
+}
+.background{
+  background-color: #433520;
+}
+.trending-header h4 {
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-.customer-support {
-  color: #febd69;
+.header-underline {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
 }
-</style>
-<style>
-  /* Styling for the product image slider container */
-  .product-slider-container {
-    width: 100%;
-    height: 400px; /* Adjust the height to match your product image size */
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    /* Ensure the product images fill the slide */
-  .product-slider .swiper-slide {
-    display: flex;
-    justify-content: center; /* Centers the image */
-    align-items: center; /* Vertically aligns the image */
-  }
 
+.header-underline2 {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 150px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
 
-  /* Styling for the swiper (slider) */
-  .product-slider {
-    margin-top: 120px;
-    width: 100%;
-    position: relative;
-  }
+/* Carousel Arrow Styling */
+.carousel-arrow {
+  border: none;
+  background: none;
+  color: #000; /* Default arrow color */
+  font-size: 1.5rem; /* Adjust arrow size */
+  cursor: pointer;
+  padding: 0 10px;
+}
 
-  /* Styling for each product image */
-  .product-image {
-    width: 100%;
-    height: 100%;
-  }
+.carousel-arrow:hover {
+  color: #6ac259; /* Green hover effect */
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
 
-  /* Optional: Styling for navigation arrows */
-  .swiper-button-next,
-  .swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #232f3e;
-    font-size: 24px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    padding: 10px;
-    border-radius: 50%;
-    z-index: 10;
-  }
+/* Carousel Item Styling */
+.carousel-inner {
+  display: flex;
+  align-items: center;
+}
 
-  .swiper-button-next {
-    right: 10px;
-  }
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
 
-  .swiper-button-prev {
-    left: 10px;
-  }
-</style>
-<style>
-  .explore-more {
-    padding: 20px;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-
-  .explore-more h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #232f3e;
-  }
-
-  .box-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .box {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-top: 100px;
-  }
-
-  .box h3 {
-    font-size: 18px;
-    color: #232f3e;
-    margin-bottom: 10px;
-  }
-
-  .box p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 15px;
-  }
-
-  .items {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .item {
-    text-align: center;
-  }
-
-  .item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 5px;
-  }
-
-  .item p {
-    font-size: 12px;
-    color: #232f3e;
-  }
-
-  .explore-btn {
-    margin-top: 20px;
-    background-color: #febd69;
-    color: #232f3e;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .explore-btn:hover {
-    background-color: #f08804;
-  }
+a{
+  text-decoration: none;
+}
 </style>
