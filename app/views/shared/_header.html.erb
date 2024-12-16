@@ -1,0 +1,207 @@
+<!-- Top Navigation Bar -->
+<nav class="navbar navbar-expand-lg bg-light px-3 border-bottom">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Toggler for Small Screens -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <!-- Notification Bell -->
+        <li class="nav-item px-3">
+          <%= image_tag 'Property_1=bell.svg', alt: 'Notification Bell', class: 'icon' %>
+        </li>
+
+        <!-- Track Your Order -->
+        <li class="nav-item border-start border-end px-3">
+          <a class="nav-link d-flex align-items-center" href="#">
+            <%= image_tag 'Property_1=carbon_delivery.svg', alt: 'Track Your Order', class: 'me-2' %>
+            Track Your Order
+          </a>
+        </li>
+
+        <!-- Register -->
+        <li class="nav-item px-3">
+          <%= link_to "Register", new_user_registration_path, class: "text-decoration-none text-body" %>
+        </li>
+        <li>
+          <span class="text-muted"> or</span>
+        </li>
+        <!-- Sign In -->
+        <li class="nav-item px-3">
+          <% if user_signed_in? %>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "logout-btn text-decoration-none text-body" %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "text-decoration-none text-body" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- Main Navigation Bar -->
+<div class="container-fluid py-3">
+  <div class="row align-items-center mx-5">
+    <!-- Logo Section -->
+    <div class="col-md-4  text-center  mb-3 mb-md-0">
+      <a class="navbar-brand d-flex align-items-center justify-content-center justify-content-md-start" href="#">
+        <%= image_tag 'Logo.svg', alt: 'DailyPicks Logo', style: 'width: 90%; height: auto;' %>
+      </a>
+    </div>
+
+    <!-- Search Bar Section -->
+    <div class="col-md-5 col-lg-6 mb-3 mb-md-0">
+      <form class="d-flex align-items-center search-bar form-group">
+        <!-- Search Input -->
+        <input
+          class="form-control rounded-start-pill search-input"
+          type="search"
+          placeholder="Search Products, Brands and Categories"
+          aria-label="Search"
+          style="height: 45px; font-size: 14px; "
+        />
+
+        <!-- Search Button -->
+        <button
+          type="submit"
+          class="btn search-button d-flex align-items-center justify-content-center rounded-end-pill"
+          style="height: 45px; width: 60px; padding: 0;"
+        >
+          <%= image_tag 'Property_1=search.svg', alt: 'Search Icon', class: 'search-icon', style: 'width: 20px; height: 20px;' %>
+        </button>
+      </form>
+    </div>
+
+
+    <!-- Icons Section -->
+    <div class=" col-md-3 col-lg-2 ms-auto ">
+      <div class="d-flex  align-items-center justify-content-between">
+        <%= image_tag 'Property_1=heart.svg', alt: 'Wishlist', class: 'icon me-3' %>
+        <%= image_tag 'Property_1=shopping-cart.svg', alt: 'Cart', class: 'icon me-3' %>
+        <%= image_tag 'Property_1=message-circle.svg', alt: 'Messages', class: 'icon me-3' %>
+        <%= image_tag 'Property_1=help-circle.svg', alt: 'Help', class: 'icon' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Secondary Navbar -->
+<div class="bg-white ">
+  <div class="container-fluid">
+    <div class="row  align-items-center py-2">
+      <!-- All Categories Dropdown -->
+      <div class="col-12 col-md-4    mb-2 mb-md-0">
+        <div class="dropdown">
+          <button
+            class="btn btn-categories text-dark mx-auto d-flex justify-content-left align-items-center "
+            type="button"
+            id="categoriesDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <%= image_tag 'Property_1=menu.svg', alt: 'menu', class: 'icon ms-2' %>
+            <i class="bi bi-list ms-2"></i><span class="fw-bold fs-5">All Categories</span>
+          </button>
+          <ul class="dropdown-menu menu1" aria-labelledby="categoriesDropdown">
+            <li><a class="dropdown-item" href="#">Groceries</a></li>
+            <li><a class="dropdown-item" href="#">Electronics & Appliances</a></li>
+            <li><a class="dropdown-item" href="#">Apparel & Accessories</a></li>
+            <li><a class="dropdown-item" href="#">Baby and Kids</a></li>
+            <li><a class="dropdown-item" href="#">Home and Living</a></li>
+            <li><a class="dropdown-item" href="#">Beauty & Personal Care</a></li>
+            <li><a class="dropdown-item" href="#">Toys & Games</a></li>
+            <li><a class="dropdown-item" href="#">Books & Stationery</a></li>
+            <li><a class="dropdown-item" href="#">Sport & Outdoors</a></li>
+            <li><a class="dropdown-item" href="#">Health & Wellness</a></li>
+            <li><a class="dropdown-item" href="#">Tech Accessories</a></li>
+            <li><a class="dropdown-item" href="#">Jewelry & Watches</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Categories Links -->
+      <div class="col-12 col-md-8 fw-bold fs-5">
+        <div class="d-flex flex-wrap  align-items-center">
+          <a href="#" class="text-decoration-none text-dark px-3 py-1">Groceries</a>
+          <a href="#" class="text-decoration-none text-dark px-3 py-1">Electronics & Appliances</a>
+          <a href="#" class="text-decoration-none text-dark px-3 py-1">Pet Supplies</a>
+          <a href="#" class="text-decoration-none text-dark px-3 py-1">Baby & Kids</a>
+          <a href="#" class="text-decoration-none text-dark px-3 py-1">Home & Living</a>
+          <div class="dropdown">
+            <a
+              href="#"
+              class="text-decoration-none text-dark dropdown-toggle px-2 py-1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              More
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Beauty</a></li>
+              <li><a class="dropdown-item" href="#">Books</a></li>
+              <li><a class="dropdown-item" href="#">Fashion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<style type="text/css">
+  
+
+.search-input {
+  border: 1px solid #6CAF32; 
+  height: 50px; 
+}
+
+/* Search Button Styles */
+.search-button {
+  background-color: #6CAF32 !important; 
+  border: none; 
+  height: 50px; 
+  padding: 0 20px; 
+  border-radius: 0 25px 25px 0; 
+  border: 1px solid #6CAF32;
+  transition: background-color 0.3s ease; 
+}
+
+/* Search Icon */
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-categories{
+  background-color: #6CAF32 !important;
+  width: 90%;
+  height: 60px;
+  border-radius: 16px 16px 0px 0px;
+}
+
+
+.menu1{
+width: 90%;
+}
+
+</style>

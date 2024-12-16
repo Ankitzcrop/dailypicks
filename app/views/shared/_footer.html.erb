@@ -1,0 +1,151 @@
+<footer class="bg-white text-dark ">
+  <!-- Newsletter Section -->
+  <div class="bg-brown text-white py-3 border-bottom">
+    <div class="container-fluid">
+      <div class="row align-items-center mx-3">
+        <!-- Logo -->
+        <div class="col-md-3  text-md-start mb-3 mb-md-0">
+          <%= image_tag 'logo_white.svg', alt: 'DailyPicks Logo', style: 'width: 80%; height: auto;' %>
+        </div>
+        <!-- Newsletter -->
+        <div class="col-md-5  mb-3 mb-md-0">
+          <h5 class="mb-1 fw-bold">Sign up to Newsletter</h5>
+          <p class="mb-2">Subscribe to our newsletter to get updates on our latest offers!</p>
+        </div>
+        <!-- Email Signup -->
+        <div class="col-md-4 text-md-end">
+          <form class="d-flex align-items-center search-bar form-group">
+            <!-- Search Input -->
+            <input
+              class="form-control rounded-start-pill search-input"
+              type="search"
+              placeholder="Email Address"
+              aria-label="Search"
+              style="height: 40px; font-size: 14px; "
+            />
+
+            <!-- Search Button -->
+            <button
+              type="submit"
+              class="btn btn-signup  text-white fw-bold d-flex align-items-center justify-content-center rounded-end-pill"
+              style="height: 40px; width: 90px; padding: 0; background-color: transparent;"
+            >
+             sign up
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Links Section -->
+  <div class="container-fluid py-4">
+    <div class="row mx-3">
+      <!-- Get Questions -->
+      <div class="col-md-3 mb-4 ">
+        <h6 class="fw-bold">Get Questions?</h6>
+        <p>(000) 0000-0000, (000)<br> 0000-0000</p>
+        <p><strong>Address:</strong></p>
+        <p><%= image_tag 'Vector-2.svg', alt: 'Vector-2.svg' %> Warehouse 211 Tulay A,
+         <br> Maragondon Cavite</p>
+        <p><%= image_tag 'Vector-2.svg', alt: 'Vector-2.svg' %> support@dailypicks.co</p>
+        <p><%= image_tag 'Vector-2.svg', alt: 'Vector-2.svg' %> +63 919 0967407</p>
+        <h6 class="fw-bold mt-3">Follow Us:</h6>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-dark"><%= image_tag 'ri_facebook-fill.svg', alt: 'ri_facebook-fill.svg' %></a>
+          <a href="#" class="text-dark"><%= image_tag 'ri_instagram-fill.svg', alt: 'ri_instagram-fill.svg' %></a>
+          <a href="#" class="text-dark"><%= image_tag 'pajamas_twitter.svg', alt: 'pajamas_twitter.svg' %></a>
+          <a href="#" class="text-dark"><%= image_tag 'mdi_linkedin.svg', alt: 'mdi_linkedin.svg' %></a>
+        </div>
+      </div>
+
+      <!-- Links Columns -->
+      <div class="col-md-2 mb-4 ">
+        <h6 class="fw-bold">Find it fast</h6>
+        <ul class="list-unstyled mt-3">
+          <li>Beverages</li>
+          <li>Snacks</li>
+          <li>Household Essentials</li>
+          <li>Meat & Seafood</li>
+          <li>Dairy</li>
+          <li>Frozen Foods</li>
+          <li>Breads & Cereals</li>
+        </ul>
+      </div>
+      <div class="col-md-2  mb-4">
+        <h6 class="fw-bold">Get to Know Us</h6>
+        <ul class="list-unstyled mt-3">
+          <li>About DailyPicks</li>
+          <li>Our Team</li>
+          <li>Our Blogs</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+      <div class="col-md-2 mb-4">
+        <h6 class="fw-bold">Let us help you</h6>
+        <ul class="list-unstyled mt-3">
+          <li>My Account</li>
+          <li>Order Tracking</li>
+          <li>Wish List</li>
+          <li>Customer Service</li>
+          <li>Return/Exchange</li>
+          <li>FAQs</li>
+        </ul>
+      </div>
+
+      <!-- App & QR Code -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold">Get <span class="text-success">DailyPicks App:</span></h6>
+        <p>Scan QR Code or Download from app stores</p>
+        <div class="d-flex align-items-center ">
+          <%= image_tag 'qr-code.png', alt: 'QR Code', style: 'width: 40%;' %>
+          <div class="ms-3">
+            <%= image_tag 'pngegg_1.png', alt: 'App Store', class: 'mb-2', style: 'width: 60%;' %><br>
+            <%= image_tag 'pngegg_2.png', alt: 'Google Play', style: 'width: 60%;' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="bg-light text-muted py-3 border-top">
+    <div class="container-fluid ">
+      <div class="row align-items-center mx-3">
+        <!-- Logo and Text -->
+        <div class="col-md-5 mb-3 mb-md-0">
+          <div class="d-flex align-items-center justify-content-start">
+            <%= image_tag 'Logo.svg', alt: 'DailyPicks Logo', style: 'width: 30%;' %>
+            <span class="ms-3">All Rights Reserved.</span>
+          </div>
+        </div>
+        <!-- Social Icons -->
+        <div class="col-md-5 mb-3 mb-md-0">
+          <div class="d-flex justify-content-start justify-content-md-start gap-3">
+            <div class="bg-secondary" style="width: 60px; height: 35px;"></div>
+            <div class="bg-secondary" style="width: 60px; height: 35px;"></div>
+            <div class="bg-secondary" style="width: 60px; height: 35px;"></div>
+            <div class="bg-secondary" style="width: 60px; height: 35px;"></div>
+          </div>
+        </div>
+        <!-- Language Selector -->
+        <div class="col-md-2 ">
+          <div class="d-flex align-items-center justify-content-start justify-content-md-end">
+            <span>English</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+</footer>
+
+<style type="text/css">
+  .btn-signup{
+    border: 1px solid  #6CAF32 !important;
+  }
+
+  .bg-brown{
+    background-color: #552E2E !important;
+  }
+</style>
