@@ -1,0 +1,282 @@
+  body{
+  margin: 0px !important;
+  padding: 0px !important;
+  overflow-x: hidden !important;
+ }
+ .search-input {
+  border: 1px solid #6CAF32; 
+  height: 50px; 
+}
+
+/* Search Button Styles */
+.search-button {
+  background-color: #6CAF32 !important; 
+  border: none; 
+  height: 50px; 
+  padding: 0 20px; 
+  border-radius: 0 25px 25px 0; 
+  border: 1px solid #6CAF32;
+  transition: background-color 0.3s ease; 
+}
+
+/* Search Icon */
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-categories{
+  background-color: #6CAF32 !important;
+  width: 90%;
+  height: 60px;
+  border-radius: 16px 16px 0px 0px;
+}
+
+
+.menu1{
+width: 90%;
+}
+
+.product-image {
+      max-width: 100%;
+      height: 80%;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .product-price {
+      color: #28a745;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: grey;
+    }
+
+   
+  .carousel-control-prev, .carousel-control-next {
+    visibility: hidden;
+  }
+  .button{
+    background-color: #88bb2f !important;
+    color: white !important;
+  }
+
+.badge{
+  font-size: 1.5rem; 
+  width: 4rem; 
+  height: 4rem;
+}
+/* Base styles for the navigation items */
+.nav-link {
+  color: #000 !important;
+  border-bottom: 2px solid transparent; /* Transparent border by default */
+  transition: border-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Active state styling */
+.nav-link.active {
+  color: #88bb2f !important; /* Active text color */
+  border-bottom: 3px solid #88bb2f !important; /* Active bottom border color */
+}
+
+/* Hover effect */
+.nav-link:hover {
+  color: #88bb2f !important;
+  border-bottom: 3px solid #88bb2f !important; /* Hover styling with higher specificity */
+}
+
+.star-icon {
+  width: 15px; /* Adjust the width as per your preference */
+  height: 15px; /* Adjust the height as per your preference */
+}
+.star2-icon {
+  width: 14px; /* Adjust the width as per your preference */
+  height: 14px; /* Adjust the height as per your preference */
+}
+
+.card {
+  position: relative;
+}
+
+.card:hover{
+  border: 1px solid #88bb2f ;
+}
+
+.card-icons {
+  position: absolute;
+  top: 30%;  /* Position the icons vertically in the middle */
+  right: 10px;  /* Adjust to position inside the card (can be any value depending on your needs) */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-wrapper {
+  position: relative;  /* To position the text over or beside the icons */
+}
+
+.card-icon {
+  width: 20px; /* Adjust size of icon inside the circle */
+  height: 20px; /* Adjust size of icon inside the circle */
+  display: block; /* Ensure the icon is displayed as a block element */
+}
+.card:hover .card-icons {
+  opacity: 1;
+
+}
+
+/* Tooltip-like effect for the text */
+.icon-text {
+  position: absolute;
+  top: 50%; /* Center the text vertically relative to the icon */
+  right: 35px; /* Position the text to the left of the icon */
+  transform: translateY(-50%); /* Adjusts to ensure the text is centered vertically */
+  background-color: rgba(211, 211, 211, 0.7);
+  color: black; /* Text color */
+  padding: 8px 12px; /* Increased padding for a larger text box */
+  border-radius: 4px;
+  font-size: 14px; /* Increase font size for better readability */
+  width: 120px; /* Increase width to allow more space for the text */
+  max-width: 200px; /* Set a max width to prevent it from becoming too wide */
+  word-wrap: break-word; /* Ensure long text wraps within the box */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;  /* Disable interaction with the tooltip */
+}
+
+/* Show the text when hovering over an icon */
+.icon-wrapper:hover .icon-text {
+  opacity: 1;
+}
+
+.icon-circle {
+  width: 30px; /* Size of the circle */
+  height: 30px; /* Size of the circle */
+  background-color: rgba(211, 211, 211, 0.7); /* Light grey background */
+  border-radius: 50%; /* Make the circle shape */
+  display: flex;
+  justify-content: center; /* Horizontally center the icon */
+  align-items: center; /* Vertically center the icon */
+  margin-bottom: 10px; /* Space between icons */
+}
+.background{
+  background-color: #433520;
+}
+.trending-header h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-underline {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
+
+.header-underline2 {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 150px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
+.header-underline3 {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 190px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
+.header-underline4{
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 247px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
+
+
+/* Carousel Arrow Styling */
+.carousel-arrow {
+  border: none;
+  background: none;
+  color: #000; /* Default arrow color */
+  font-size: 1.5rem; /* Adjust arrow size */
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.carousel-arrow:hover {
+  color: #6ac259; /* Green hover effect */
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Carousel Item Styling */
+.carousel-inner {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+
+.rating-progress {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.star-label {
+  width: 60px; /* Fixed width to align stars */
+  font-weight: bold;
+}
+
+.progress-container {
+  flex: 1; /* Makes the progress bar fill the space */
+  margin: 0 10px; /* Spacing between labels and percentages */
+}
+
+.progress {
+  height: 10px; /* Adjust the height to match the design */
+  background-color: #e9ecef; /* Light gray background for the progress bar */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* To prevent overflow of child elements */
+}
+
+.progress-bar {
+  height: 100%; /* Fills the progress bar container */
+  border-radius: 5px; /* Ensures rounded corners for the filled portion */
+}
+
+.percentage {
+  font-weight: bold;
+  color: #28a745; /* Matches the green from the progress bar */
+  min-width: 40px; /* To align percentages */
+  text-align: right;
+}
+.btn-signup{
+    border: 1px solid  #6CAF32 !important;
+  }
+
+  .bg-brown{
+    background-color: #552E2E !important;
+  }

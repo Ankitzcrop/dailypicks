@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end  
   root "articles#index"
   get "/articles", to: "articles#index"
-  resources :products, only: [:index]
+  resources :products
   resources :carts, only: [:create, :show]
   resources :cart, only: [:index] do
     collection do
