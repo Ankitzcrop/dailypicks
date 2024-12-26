@@ -1,166 +1,243 @@
-<div class="row">
-  <% @products.each do |product| %>
-    <div class="col-md-4">
-      <div class="card product-card mb-4 shadow-sm">
-        <div class="image-container">
-          <% if product.image_url.present? %>
-            <img src="<%= asset_path(product.image_url) %>" class="card-img-top" alt="<%= product.name %>">
-          <% else %>
-            <div class="no-image-placeholder">
-              No Image Available
+<div class="container-fluid">
+  <div class="row mt-5">
+   <% @products.each do |product| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-muted rounded-4 position-relative">
+        <div class="card-body p-3 mb-2">
+          <!-- Category -->
+          <p class="text-muted mb-1 small mt-3"><%= product.category %></p>
+          <!-- Product Image -->
+          <div class="text-center mt-5 mb-3">
+            <% if product.image_url.present? %>
+              <%= image_tag product.image_url, class: "img-fluid rounded mb-3", style: "height: 150px; width: 150px; object-fit: cover;", alt: product.name %>
+            <% else %>
+              <div class="no-image-placeholder">
+                No Image Available
+              </div>
+            <% end %>
+          </div>
+          <!-- Product Title -->
+          <p class="card-title fs-6"><%= product.name %></p>
+          <!-- Price -->
+          <div class="d-flex align-items-center mt-2">
+            <h5 class="card-text mb-0 text-dark me-3">₹<%= product.discount_price %></h5>
+            <h6 class="card-text mb-0 text-muted text-decoration-line-through small">₹<%= product.price %></h6>
+          </div>
+          <!-- Rating and Sold Count -->
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <!-- Star Rating -->
+            <div class="d-flex align-items-center">
+              <% (1..5).each do |i| %>
+                <% if i <= product.rating.round %>
+                  <%= image_tag "Property_1=Variant16.svg", alt: "Star", class: "me-1 star-icon" %>
+                <% else %>
+                  <%= image_tag "Property_1=star.svg", alt: "Empty Star", class: "me-1 star2-icon" %>
+                <% end %>
+              <% end %>
             </div>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-dark"><%= product.name %></h5>
-          <p class="card-text text-muted">Rating: <strong><%= product.rating %> ★</strong> (<%= product.reviews_count %> reviews)</p>
-          <p class="card-text price">
-            <strong class="text-primary">₹<%= product.discount_price %></strong>
-            <span class="text-muted"><del>₹<%= product.price %></del></span>
-          </p>
+            <!-- Sold Count -->
+            <p class="mb-0 text-muted small">sold: <%= product.bought_in_past_month %></p>
+          </div>
+          <!-- Free Delivery -->
           <% if product.free_delivery %>
-            <p class="text-success fw-bold">FREE delivery</p>
+            <p class="text-success fw-bold mt-2">FREE delivery</p>
+          <% else %>
+            <p class="text-danger fw-bold mt-2">Delivery Charges Apply</p>
           <% end %>
-          <form method="post" action="/cart/add">
-            <button class="btn btn-primary w-100 premium-button" <%= product.stock.zero? ? 'disabled' : '' %>>
-              <%= product.stock.zero? ? "Out of Stock" : "Add to Cart" %>
-            </button>
-          </form>
+          <!-- Stock -->
+          <p class="text-muted small mt-2">Stock: <%= product.stock.zero? ? "Out of Stock" : product.stock %></p>
+        </div>
+        <!-- Card Icons -->
+        <div class="card-icons position-absolute">
+          <div class="icon-wrapper">
+            <div class="icon-circle">
+              <%= image_tag "Property_1=heart.svg", alt: "Like", class: "card-icon" %>
+            </div>
+            <span class="icon-text">Add to Wishlist</span>
+          </div>
+          <div class="icon-wrapper">
+            <div class="icon-circle">
+              <%= image_tag "Property_1=eye.svg", alt: "Eye", class: "card-icon" %>
+            </div>
+            <span class="icon-text">Quick View</span>
+          </div>
+          <div class="icon-wrapper">
+            <div class="icon-circle">
+              <%= image_tag "Property_1=cart-add.svg", alt: "Cart", class: "card-icon" %>
+            </div>
+            <span class="icon-text">Add to Cart</span>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
+  </div>
 </div>
 
 <style>
-  /* General Page Styling */
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
+ 
+ body{
+  margin: 0px !important;
+  padding: 0px !important;
+  overflow-x: hidden !important;
+ }
+  .carousel-control-prev, .carousel-control-next {
+    visibility: hidden;
+  }
+  .button{
+    background-color: #88bb2f;
+    color: white;
   }
 
-  /* Product Card Styling */
-  .product-card {
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.badge{
+  font-size: 1.5rem; 
+  width: 4rem; 
+  height: 4rem;
+}
+/* Base styles for the navigation items */
 
-  .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  }
+/* Active state styling */
+.nav-link.active {
+  color: #88bb2f; /* Active text color */
+  border-bottom: 3px solid #88bb2f !important; /* Active bottom border color */
+}
 
-  /* Image Container */
-  .image-container {
-    width: 100%;
-    height: 250px;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-  }
+/* Hover effect */
+.nav-link:hover {
+  color: #88bb2f;
+  border-bottom: 3px solid #88bb2f !important; /* Hover styling with higher specificity */
+}
 
-  .card-img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+.star-icon {
+  width: 15px; /* Adjust the width as per your preference */
+  height: 15px; /* Adjust the height as per your preference */
+}
+.star2-icon {
+  width: 14px; /* Adjust the width as per your preference */
+  height: 14px; /* Adjust the height as per your preference */
+}
 
-  .product-card:hover .card-img-top {
-    transform: scale(1.1);
-  }
+.card {
+  position: relative;
+}
 
-  .no-image-placeholder {
-    width: 100%;
-    height: 250px;
-    background: linear-gradient(135deg, #e0e0e0, #f7f7f7);
-    color: #999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px dashed #ccc;
-  }
+.card:hover{
+  border: 1px solid #88bb2f ;
+}
 
-  /* Card Body Styling */
-  .card-body {
-    padding: 20px;
-  }
+.card-icons {
+  position: absolute;
+  top: 30%;  /* Position the icons vertically in the middle */
+  right: 10px;  /* Adjust to position inside the card (can be any value depending on your needs) */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-  .card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
-  }
+.icon-wrapper {
+  position: relative;  /* To position the text over or beside the icons */
+}
 
-  .card-text {
-    margin-bottom: 15px;
-    text-align: center;
-  }
+.card-icon {
+  width: 20px; /* Adjust size of icon inside the circle */
+  height: 20px; /* Adjust size of icon inside the circle */
+  display: block; /* Ensure the icon is displayed as a block element */
+}
+.card:hover .card-icons {
+  opacity: 1;
 
-  .card-text.price strong {
-    font-size: 22px;
-    font-weight: bold;
-  }
+}
 
-  .card-text.price span {
-    font-size: 16px;
-    color: #888;
-  }
+/* Tooltip-like effect for the text */
+.icon-text {
+  position: absolute;
+  top: 50%; /* Center the text vertically relative to the icon */
+  right: 35px; /* Position the text to the left of the icon */
+  transform: translateY(-50%); /* Adjusts to ensure the text is centered vertically */
+  background-color: rgba(211, 211, 211, 0.7);
+  color: black; /* Text color */
+  padding: 8px 12px; /* Increased padding for a larger text box */
+  border-radius: 4px;
+  font-size: 14px; /* Increase font size for better readability */
+  width: 120px; /* Increase width to allow more space for the text */
+  max-width: 200px; /* Set a max width to prevent it from becoming too wide */
+  word-wrap: break-word; /* Ensure long text wraps within the box */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;  /* Disable interaction with the tooltip */
+}
 
-  .text-muted {
-    font-size: 14px;
-  }
+/* Show the text when hovering over an icon */
+.icon-wrapper:hover .icon-text {
+  opacity: 1;
+}
 
-  .text-primary {
-    color: #007bff;
-  }
+.icon-circle {
+  width: 30px; /* Size of the circle */
+  height: 30px; /* Size of the circle */
+  background-color: rgba(211, 211, 211, 0.7); /* Light grey background */
+  border-radius: 50%; /* Make the circle shape */
+  display: flex;
+  justify-content: center; /* Horizontally center the icon */
+  align-items: center; /* Vertically center the icon */
+  margin-bottom: 10px; /* Space between icons */
+}
+.background{
+  background-color: #433520;
+}
+.trending-header h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-  .text-success {
-    font-size: 14px;
-    font-weight: bold;
-  }
+.header-underline {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
 
-  /* Button Styling */
-  .premium-button {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
-    color: #fff;
-    border-radius: 5px;
-  }
+.header-underline2 {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 150px;
+  height: 3px;
+  background-color: #6ac259; /* Green underline */
+  border-radius: 5px;
+}
 
-  .premium-button:hover {
-    background: linear-gradient(45deg, #0056b3, #003a80);
-    transform: translateY(-2px);
-  }
+/* Carousel Arrow Styling */
+.carousel-arrow {
+  border: none;
+  background: none;
+  color: #000; /* Default arrow color */
+  font-size: 1.5rem; /* Adjust arrow size */
+  cursor: pointer;
+  padding: 0 10px;
+}
 
-  .premium-button:disabled {
-    background: #ccc;
-    color: #fff;
-    cursor: not-allowed;
-  }
+.carousel-arrow:hover {
+  color: #6ac259; /* Green hover effect */
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
 
-  /* Spacing for Rows */
-  .row {
-    margin: 0 -15px;
-  }
+/* Carousel Item Styling */
+.carousel-inner {
+  display: flex;
+  align-items: center;
+}
 
-  .col-md-4 {
-    padding: 15px;
-  }
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+a{
+  text-decoration: none;
+}
 </style>
