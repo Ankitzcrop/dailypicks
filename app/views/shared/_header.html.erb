@@ -123,6 +123,11 @@
             <i class="bi bi-list ms-2"></i><span class="fw-bold fs-5">All Categories</span>
           </button>
           <ul class="dropdown-menu menu1" aria-labelledby="categoriesDropdown">
+            <li>
+              <%= link_to "Clotch",
+                products_path(category: "Clotch"),
+                class: "dropdown-item" %>
+            </li>
             <li><a class="dropdown-item" href="#">Groceries</a></li>
             <li><a class="dropdown-item" href="#">Electronics & Appliances</a></li>
             <li><a class="dropdown-item" href="#">Apparel & Accessories</a></li>

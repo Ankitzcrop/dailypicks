@@ -15,7 +15,19 @@ Rails.application.routes.draw do
   root "articles#index"
   get "/articles", to: "articles#index"
   resources :products
+  resources :products, only: [:index] do
+    member do
+      get :details
+    end
+  end
   resources :carts, only: [:create, :show]
+  resources :cart, only: [:index] do
+    collection do
+      post :add
+      post :buy_now
+      delete :remove
+    end
+  end
   resources :cart, only: [:index] do
     collection do
       post :add

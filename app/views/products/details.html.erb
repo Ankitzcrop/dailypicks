@@ -1,0 +1,97 @@
+<div class="container my-5">
+  <div class="row">
+
+    <!-- LEFT : Product Image -->
+    <div class="col-md-5 text-center">
+      <% if @product.image.attached? %>
+        <%= image_tag @product.image,
+          class: "img-fluid rounded shadow",
+          style: "max-height: 420px; object-fit: contain;" %>
+      <% else %>
+        <div class="border p-5 text-muted">No Image Available</div>
+      <% end %>
+    </div>
+
+    <!-- RIGHT : Product Info -->
+    <div class="col-md-7">
+
+      <!-- Breadcrumb -->
+      <p class="text-muted small">
+        Home /
+        <%= @product.subcategory&.category&.name %> /
+        <%= @product.subcategory&.name %>
+      </p>
+
+      <!-- Title -->
+      <h2 class="fw-bold"><%= @product.name %></h2>
+
+      <!-- Rating -->
+      <div class="mb-2">
+        <% 4.times do %>
+          ⭐
+        <% end %>
+        <span class="text-muted small">(100 Ratings)</span>
+      </div>
+
+      <!-- Price -->
+      <div class="my-3">
+        <h3 class="text-success d-inline">
+          ₹ <%= @product.discount_price.presence || @product.price %>
+        </h3>
+        <% if @product.discount_price.present? %>
+          <span class="text-muted text-decoration-line-through ms-2">
+            ₹ <%= @product.price %>
+          </span>
+        <% end %>
+      </div>
+
+      <!-- Stock -->
+      <p class="fw-semibold">
+        Stock:
+        <% if @product.stock_quantity.to_i > 0 %>
+          <span class="text-success">Available</span>
+        <% else %>
+          <span class="text-danger">Out of Stock</span>
+        <% end %>
+      </p>
+
+      <!-- Cash on Delivery -->
+      <p class="text-success fw-bold">
+        ✔ Cash on Delivery Available
+      </p>
+
+      <!-- Buttons -->
+      <div class="d-flex gap-3 mt-4">
+          <%= form_with url: add_cart_index_path, method: :post, local: true, id: "product-form" do %>
+            <%= hidden_field_tag :product_id, @product.id %>
+
+            <!-- Quantity -->
+            <div class="d-flex align-items-center my-3">
+              <span class="me-3 fw-bold">Quantity:</span>
+              <%= number_field_tag :quantity, 1,
+                    min: 1,
+                    class: "form-control w-25" %>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-3 mt-4">
+              <%= submit_tag "Add to Cart",
+                    class: "btn btn-outline-success px-4 py-2" %>
+
+              <%= button_tag "Buy Now",
+                    type: "submit",
+                    formaction: buy_now_cart_index_path,
+                    class: "btn btn-success px-4 py-2" %>
+            </div>
+          <% end %>
+      </div>
+
+      <!-- Delivery Info -->
+      <div class="mt-4">
+        <p>🚚 Free Delivery on orders above ₹500</p>
+        <p>⏱ Delivery within 3 days</p>
+      </div>
+
+    </div>
+  </div>
+</div>

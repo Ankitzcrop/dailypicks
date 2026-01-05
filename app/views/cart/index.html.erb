@@ -1,16 +1,30 @@
-<!-- app/views/cart/index.html.erb -->
-<div class="container my-4">
-  <h1>Your Cart</h1>
-  <% if @cart.present? %>
-    <ul class="list-group">
-      <% @cart.each do |product_id| %>
-        <% product = Product.find(product_id) %>
-        <li class="list-group-item">
-          <%= product.name %> - ₹<%= product.discount_price %>
-        </li>
-      <% end %>
-    </ul>
+<div class="container my-5">
+  <h2 class="fw-bold mb-4">My Cart</h2>
+
+  <% if @cart_items.any? %>
+    <% @cart_items.each do |product| %>
+      <div class="d-flex justify-content-between align-items-center border p-3 mb-3">
+        <div>
+          <h5><%= product.name %></h5>
+          <p>Qty: <%= session[:cart][product.id.to_s] %></p>
+        </div>
+
+        <div class="fw-bold">
+          ₹ <%= product.price * session[:cart][product.id.to_s] %>
+        </div>
+
+        <%= button_to "Remove",
+              remove_cart_index_path(product_id: product.id),
+              method: :delete,
+              class: "btn btn-sm btn-danger" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Proceed to Checkout",
+          "#",
+          class: "btn btn-success mt-3" %>
+
   <% else %>
-    <p>Your cart is empty.</p>
+    <p>Your cart is empty</p>
   <% end %>
 </div>
