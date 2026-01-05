@@ -1,0 +1,120 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+
+      <div class="card product-form-card">
+        <div class="card-header text-center bg-white border-0 pt-4">
+          <h4 class="fw-bold mb-1">Edit Product</h4>
+          <small class="text-muted">Update product details</small>
+        </div>
+
+        <div class="card-body px-4 pb-4 pt-3">
+
+          <%= form_with model: [:admin, @product], local: true, html: { multipart: true } do |f| %>
+
+            <!-- Name -->
+            <div class="mb-3">
+              <%= f.label :name, class: "form-label" %>
+              <%= f.text_field :name,
+                    class: "form-control",
+                    placeholder: "Enter product name" %>
+            </div>
+
+            <!-- Price / Discount -->
+            <div class="row g-3">
+              <div class="col-md-6">
+                <%= f.label :price, class: "form-label" %>
+                <%= f.number_field :price,
+                      step: 0.01,
+                      class: "form-control",
+                      placeholder: "₹ Price" %>
+              </div>
+
+              <div class="col-md-6">
+                <%= f.label :discount_price, class: "form-label" %>
+                <%= f.number_field :discount_price,
+                      step: 0.01,
+                      class: "form-control",
+                      placeholder: "₹ Discount" %>
+              </div>
+            </div>
+
+            <!-- Subcategory -->
+            <div class="mt-3">
+              <%= label_tag :subcategory_name, "Subcategory", class: "form-label" %>
+              <%= text_field_tag :subcategory_name,
+                    @subcategory_name,
+                    class: "form-control",
+                    placeholder: "Jeans / Shirt" %>
+            </div>
+
+            <!-- Stock -->
+            <div class="mt-3">
+              <%= f.label :stock_quantity, class: "form-label" %>
+              <%= f.number_field :stock_quantity,
+                    class: "form-control",
+                    placeholder: "Available stock" %>
+            </div>
+
+            <!-- Image -->
+            <div class="mt-3">
+              <%= f.label :image, "Product Image", class: "form-label" %>
+
+              <% if @product.image.attached? %>
+                <div class="mb-2">
+                  <%= image_tag @product.image.variant(resize_to_limit: [120, 120]),
+                        class: "rounded shadow-sm" %>
+                </div>
+              <% end %>
+
+              <%= f.file_field :image, class: "form-control" %>
+            </div>
+
+            <!-- Submit -->
+            <div class="mt-4 d-grid">
+              <%= f.submit "Update Product", class: "btn btn-dailypicks" %>
+            </div>
+
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SAME CSS (reuse from new page) -->
+<style>
+  .product-form-card {
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .product-form-card .form-control {
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .product-form-card .form-label {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .btn-dailypicks {
+    background: linear-gradient(135deg, #45c854, #6bdc72);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-dailypicks:hover {
+    background: linear-gradient(135deg, #3ab44a, #5ccf65);
+    transform: translateY(-1px);
+  }
+</style>

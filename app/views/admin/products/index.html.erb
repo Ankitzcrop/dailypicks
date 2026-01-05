@@ -1,0 +1,187 @@
+<h2 class="page-title">All Products</h2>
+
+<%= link_to "➕ Add Product", new_admin_product_path, class: "add-product-btn" %>
+
+<table class="products-table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <!-- Product column -->
+        <td class="product-info">
+          <% if product.image.attached? %>
+            <%= image_tag product.image.variant(resize_to_fill: [80, 80]), class: "product-img" %>
+          <% end %>
+
+          <div>
+            <div class="product-name"><%= product.name %></div>
+            <div class="product-id">ID: <%= product.id %></div>
+          </div>
+        </td>
+
+        <!-- Price -->
+        <td class="price">₹ <%= product.price %></td>
+
+        <!-- Category -->
+        <td>
+          <span class="badge badge-category">
+            <%= product.subcategory&.category&.name || "-" %>
+          </span>
+        </td>
+
+        <!-- Subcategory -->
+        <td>
+          <span class="badge badge-subcategory">
+            <%= product.subcategory&.name || "-" %>
+          </span>
+        </td>
+
+        <!-- Actions -->
+        <td class="actions">
+          <%= link_to "Edit", edit_admin_product_path(product), class: "btn btn-edit" %>
+          <%= link_to "Delete",
+            admin_product_path(product),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            },
+            class: "btn btn-delete" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<style>
+ /* Page */
+  .page-title {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  /* Add button */
+  .add-product-btn {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  /* Table */
+  .products-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  /* Header */
+  .products-table thead th {
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* Row card style */
+  .products-table tbody tr {
+    background: #fff;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .products-table tbody tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+
+  /* Cell */
+  .products-table td {
+    padding: 14px;
+    vertical-align: middle;
+  }
+
+  /* Product info */
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .product-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #eee;
+  }
+
+  .product-name {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .product-id {
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* Price */
+  .price {
+    font-weight: 700;
+    color: #2c3e50;
+  }
+
+  /* Badges */
+  .badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-category {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+
+  .badge-subcategory {
+    background: #f1f8e9;
+    color: #558b2f;
+  }
+
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .btn-edit {
+    background: #3498db;
+    color: #fff;
+  }
+
+  .btn-delete {
+    background: #e74c3c;
+    color: #fff;
+  }
+</style>

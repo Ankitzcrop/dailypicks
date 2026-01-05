@@ -40,6 +40,11 @@
         <!-- Sign In -->
         <li class="nav-item px-3">
           <% if user_signed_in? %>
+            <% if current_user.role == "admin" %>
+              <%= link_to "Add Product",
+                  new_admin_product_path,
+                  class: "text-decoration-none text-body me-3" %>
+            <% end %>
             <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "logout-btn text-decoration-none text-body" %>
           <% else %>
             <%= link_to "Sign In", new_user_session_path, class: "text-decoration-none text-body" %>
