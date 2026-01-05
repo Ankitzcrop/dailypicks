@@ -9,6 +9,8 @@ class User < ApplicationRecord
          has_one_attached :philippine_government_id_card
          has_one_attached :address_proof
          has_one_attached :logo
+         has_one :cart, dependent: :destroy
+
          
          validates :name, :email, :mobile, :store_name, presence: true, if: :seller?
          validates :mobile, format: { with: /\A\+63\d{10}\z/, message: "must start with +63 and have 10 digits", if: :seller? }

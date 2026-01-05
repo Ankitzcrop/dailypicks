@@ -1,0 +1,24 @@
+<div class="container my-5">
+  <h2 class="fw-bold mb-4">My Cart</h2>
+
+  <% if @cart&.cart_items&.any? %>
+    <% @cart.cart_items.each do |item| %>
+      <div class="d-flex justify-content-between border p-3 mb-3">
+        <div>
+          <h5><%= item.product.name %></h5>
+          <p>Quantity: <%= item.quantity %></p>
+        </div>
+        <div>
+          ₹ <%= item.product.price * item.quantity %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to "Proceed to Checkout",
+          "#",
+          class: "btn btn-success mt-3" %>
+
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+</div>
