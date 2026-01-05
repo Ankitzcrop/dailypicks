@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+           enum role: { user: "user", admin: "admin" }
+
          has_one_attached :philippine_government_id_card
          has_one_attached :address_proof
          has_one_attached :logo
