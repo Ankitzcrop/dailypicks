@@ -94,8 +94,19 @@
     <!-- Icons Section -->
     <div class=" col-md-3 col-lg-2 ms-auto ">
       <div class="d-flex  align-items-center justify-content-between">
-        <%= image_tag 'Property_1=heart.svg', alt: 'Wishlist', class: 'icon me-3' %>
-        <%= image_tag 'Property_1=shopping-cart.svg', alt: 'Cart', class: 'icon me-3' %>
+        <%= link_to cart_index_path, class: "me-3" do %>
+          <%= image_tag 'Property_1=heart.svg',
+                alt: 'Cart',
+                class: 'icon' %>
+        <% end %>
+        <%= link_to(
+              current_user&.admin? ? admin_orders_path : orders_path,
+              class: "me-3"
+            ) do %>
+          <%= image_tag 'Property_1=shopping-cart.svg',
+                alt: 'Orders',
+                class: 'icon' %>
+        <% end %>
         <%= image_tag 'Property_1=message-circle.svg', alt: 'Messages', class: 'icon me-3' %>
         <%= image_tag 'Property_1=help-circle.svg', alt: 'Help', class: 'icon' %>
       </div>
@@ -124,8 +135,8 @@
           </button>
           <ul class="dropdown-menu menu1" aria-labelledby="categoriesDropdown">
             <li>
-              <%= link_to "Clotch",
-                products_path(category: "Clotch"),
+              <%= link_to "Clothing",
+                products_path(category: "Clothing"),
                 class: "dropdown-item" %>
             </li>
             <li><a class="dropdown-item" href="#">Groceries</a></li>

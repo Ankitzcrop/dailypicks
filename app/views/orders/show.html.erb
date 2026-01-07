@@ -1,0 +1,131 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+
+      <div class="order-success-modern">
+
+        <!-- Icon -->
+        <div class="success-check">
+          <span>✔</span>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="fw-bold mt-4 mb-1">
+          Order Confirmed
+        </h2>
+        <p class="text-muted mb-4">
+          Your order has been placed successfully 🎉
+        </p>
+
+        <!-- Order Info -->
+        <div class="order-meta mb-4">
+          <div>
+            <small>Order ID</small>
+            <strong>#<%= @order.id %></strong>
+          </div>
+          <div>
+            <small>Total Amount</small>
+            <strong class="text-success">
+              ₱ <%= @order.total_amount %>
+            </strong>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="delivery-card text-start">
+          <h6 class="fw-bold mb-3">📍 Delivery Address</h6>
+
+          <p class="fw-semibold mb-1">
+            <%= @order.full_name %>
+          </p>
+
+          <p class="text-muted mb-1">
+            <%= @order.address_line1 %>
+          </p>
+
+          <% if @order.address_line2.present? %>
+            <p class="text-muted mb-1">
+              <%= @order.address_line2 %>
+            </p>
+          <% end %>
+
+          <p class="text-muted mb-1">
+            <%= @order.city %>, <%= @order.state %> - <%= @order.pincode %>
+          </p>
+
+          <p class="fw-semibold mb-0">
+            📞 <%= @order.phone %>
+          </p>
+        </div>
+
+        <!-- Button -->
+        <div class="mt-5">
+          <%= link_to "Continue Shopping",
+                products_path,
+                class: "btn btn-modern px-5 py-2" %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<style>
+  .order-success-modern {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  }
+
+  .success-check {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #63c766, #4caf50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.2rem;
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+  }
+
+  .order-meta {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 16px 20px;
+    border-radius: 16px;
+  }
+
+  .order-meta small {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .delivery-card {
+    background: #f9fdf8;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .btn-modern {
+    background: linear-gradient(135deg, #5cc06b, #7cbf3c);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    color: #fff;
+  }
+</style>

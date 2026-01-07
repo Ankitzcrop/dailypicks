@@ -10,6 +10,7 @@ class User < ApplicationRecord
          has_one_attached :address_proof
          has_one_attached :logo
          has_one :cart, dependent: :destroy
+         has_many :orders, dependent: :destroy
 
          
          validates :name, :email, :mobile, :store_name, presence: true, if: :seller?

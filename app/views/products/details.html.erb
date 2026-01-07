@@ -36,11 +36,11 @@
       <!-- Price -->
       <div class="my-3">
         <h3 class="text-success d-inline">
-          ₹ <%= @product.discount_price.presence || @product.price %>
+          ₱ <%= @product.discount_price.presence || @product.price %>
         </h3>
         <% if @product.discount_price.present? %>
           <span class="text-muted text-decoration-line-through ms-2">
-            ₹ <%= @product.price %>
+            ₱ <%= @product.price %>
           </span>
         <% end %>
       </div>

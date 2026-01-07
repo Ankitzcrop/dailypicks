@@ -33,4 +33,14 @@ Rails.application.routes.draw do
       post :add
     end
   end
+  resources :checkout, only: [:index] do
+    collection do
+      post :place_order
+    end
+  end
+
+  resources :orders, only: [:index, :show]
+  namespace :admin do
+    resources :orders, only: [:index, :show, :update]
+  end
 end

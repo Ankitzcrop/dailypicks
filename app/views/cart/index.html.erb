@@ -10,7 +10,7 @@
         </div>
 
         <div class="fw-bold">
-          ₹ <%= product.price * session[:cart][product.id.to_s] %>
+          ₱ <%= product.discount_price * session[:cart][product.id.to_s] %>
         </div>
 
         <%= button_to "Remove",
@@ -21,8 +21,8 @@
     <% end %>
 
     <%= link_to "Proceed to Checkout",
-          "#",
-          class: "btn btn-success mt-3" %>
+      checkout_index_path,
+      class: "btn btn-success btn-lg mt-3" %>
 
   <% else %>
     <p>Your cart is empty</p>
