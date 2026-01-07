@@ -57,8 +57,12 @@ class Admin::ProductsController < Admin::BaseController
 
   # DELETE /admin/products/:id
   def destroy
-    @product.destroy
-    redirect_to admin_products_path, notice: "Product deleted successfully"
+    if @product.destroy
+      redirect_to admin_products_path, notice: "Product deleted"
+    else
+      redirect_to admin_products_path,
+        alert: "Cannot delete product with existing orders"
+    end
   end
 
   private
