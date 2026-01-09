@@ -94,19 +94,32 @@
     <!-- Icons Section -->
     <div class=" col-md-3 col-lg-2 ms-auto ">
       <div class="d-flex  align-items-center justify-content-between">
-        <%= link_to cart_index_path, class: "me-3" do %>
-          <%= image_tag 'Property_1=heart.svg',
-                alt: 'Cart',
-                class: 'icon' %>
-        <% end %>
-        <%= link_to(
-              current_user&.admin? ? admin_orders_path : orders_path,
-              class: "me-3"
-            ) do %>
-          <%= image_tag 'Property_1=shopping-cart.svg',
-                alt: 'Orders',
-                class: 'icon' %>
-        <% end %>
+        <div class="icon-wrapper me-3 position-relative">
+          <%= link_to cart_index_path do %>
+            <%= image_tag 'Property_1=heart.svg',
+                  alt: 'Cart',
+                  class: 'icon' %>
+          <% end %>
+
+          <% if cart_count > 0 %>
+            <span class="icon-badge"><%= cart_count %></span>
+          <% end %>
+        </div>
+        <div class="icon-wrapper me-3">
+          <%= link_to(
+                current_user&.admin? ? admin_orders_path : orders_path
+              ) do %>
+
+            <%= image_tag 'Property_1=shopping-cart.svg',
+                  alt: 'Orders',
+                  class: 'icon-img' %>
+
+            <% if @order_count.to_i > 0 %>
+              <span class="icon-badge"><%= @order_count %></span>
+            <% end %>
+
+          <% end %>
+        </div>
         <%= image_tag 'Property_1=message-circle.svg', alt: 'Messages', class: 'icon me-3' %>
         <%= image_tag 'Property_1=help-circle.svg', alt: 'Help', class: 'icon' %>
       </div>
@@ -183,3 +196,29 @@
     </div>
   </div>
 </div>
+<style>
+  .icon-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .icon-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .icon-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: #e63946;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 12px;
+    line-height: 1;
+    min-width: 18px;
+    text-align: center;
+  }
+</style>
