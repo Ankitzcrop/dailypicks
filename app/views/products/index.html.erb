@@ -17,14 +17,28 @@
                 <%# No Image Available %>
               <%# </div> %>
             <%# <% end %> 
-            <%= link_to details_product_path(product) do %>
-              <% if product.image.attached? %>
-                <%= image_tag product.image,
-                    class: "img-fluid rounded mb-3",
-                    style: "height: 150px; width: 150px; object-fit: cover;" %>
-              <% else %>
-                <div class="no-image-placeholder">No Image Available</div>
+            <% if product.stock_quantity.to_i > 0 %>
+              <%= link_to details_product_path(product) do %>
+                <% if product.image.attached? %>
+                  <%= image_tag product.image,
+                      class: "img-fluid rounded mb-3",
+                      style: "height: 150px; width: 150px; object-fit: cover;" %>
+                <% else %>
+                  <div class="no-image-placeholder">No Image Available</div>
+                <% end %>
               <% end %>
+            <% else %>
+              <div class="out-of-stock-img"
+                  onclick="showOutOfStockPopup()"
+                  style="cursor: not-allowed;">
+                <% if product.image.attached? %>
+                  <%= image_tag product.image,
+                      class: "img-fluid rounded mb-3 opacity-50",
+                      style: "height: 150px; width: 150px; object-fit: cover;" %>
+                <% else %>
+                  <div class="no-image-placeholder">No Image Available</div>
+                <% end %>
+              </div>
             <% end %>
           </div>
           <!-- Product Title -->
@@ -258,3 +272,8 @@ a{
   text-decoration: none;
 }
 </style>
+<script>
+  function showOutOfStockPopup() {
+    alert("This product is currently out of stock");
+  }
+</script>
