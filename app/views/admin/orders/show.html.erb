@@ -60,7 +60,7 @@
             <div class="mb-3">
               <%= select_tag :status,
                     options_for_select(
-                      ["pending", "confirmed", "shipped", "delivered", "cancelled"],
+                      ["Pending", "Confirmed", "Shipped", "Delivered", "Cancelled"],
                       @order.status
                     ),
                     class: "form-select" %>
